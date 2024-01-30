@@ -3,19 +3,18 @@ import React, { useState } from "react";
 
 const Main = () => {
   return (
-    <main>
-      <div className="feed-menu-wrapper">
+    <main className="basic-bg">
+      <div className="feed-menu-wrapper basic-font-color">
         <ol className="feed-menu">
-          <li className="fm-li">글</li>
-          <li className="fm-li">시리즈</li>
-          <li className="fm-li">소개</li>
+          <li className="fm-li basic-font-color">Board(3)</li>
+          <li className="fm-li basic-font-color cursor-pointer">Write</li>
         </ol>
       </div>
-      <div className="feed-wrapper">
+      <div className="feed-wrapper basic-font-color">
         <div className="feed">
           <div className="feed-photo"></div>
-          <h5>Jenkins & Git 활용</h5>
-          <p>
+          <h5 className="feed-title">Jenkins & Git 활용</h5>
+          <p className="feed-des basic-font-color">
             📌 배경 최근 회사에 입사했는데, 20개 가까이되는 개발 프로젝트들이
             AWS EC2 서비스로 호스팅
           </p>

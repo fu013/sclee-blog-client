@@ -32,27 +32,33 @@
   }
 }
 
-body {
+/* body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
+  background: rgb(var(--foreground-rgb));
+} */
 
 @layer base {
+  body,
+  html {
+    @apply ease-in-out duration-300 transition-all bg-white dark:bg-[#1b1d1f];
+  }
+  nav {
+    @apply ease-in-out duration-300 transition-all bg-gray-100 dark:bg-black w-full;
+  }
   section {
-    @apply flex h-auto mt-10 mx-auto max-w-[1200px] dark:bg-black justify-between relative overflow-hidden;
+    @apply ease-in-out duration-300 transition-all flex h-auto mt-10 mx-auto max-w-[1200px] dark:bg-[#1b1d1f] justify-between relative overflow-hidden;
   }
   aside {
-    @apply h-fit min-w-[400px] max-w-[1200px] bg-white dark:bg-black mr-10 relative p-5;
+    @apply ease-in-out duration-300 transition-all h-fit min-w-[400px] max-w-[1200px] bg-white dark:bg-[#1b1d1f] mr-10 relative p-5;
   }
   main {
-    @apply bg-white w-full h-auto relative p-5;
+    @apply ease-in-out duration-300 transition-all bg-white dark:bg-[#1b1d1f] w-full h-auto relative p-5;
+  }
+  footer {
+    @apply ease-in-out duration-300 transition-all bg-white dark:bg-[#1b1d1f] border-t border-t-gray-300 dark:border-t-gray-600 h-[3rem] px-10 text-[13px] flex justify-end items-center text-gray-600 dark:text-gray-300;
   }
 }
+
 @layer components {
   .card {
     @apply w-full h-40 rounded-2xl p-1 relative border border-t-blue-50 flex justify-center items-center text-black bg-orange-300;
@@ -76,15 +82,39 @@ body {
     @apply border-b-2 border-blue-500;
   }
   .feed-wrapper {
-    @apply text-black border-t-blue-50 p-5;
+    @apply border-t-blue-50 p-5;
   }
   .feed-photo {
-    @apply border-t-blue-50 border-2 h-[10rem] w-full;
+    @apply border-t-blue-50 border-2 h-[25rem] w-full;
   }
   .tags {
-    @apply flex;
+    @apply flex my-6;
   }
   .tag {
-    @apply rounded-xl border-2 border-slate-500 mx-2 px-2;
+    @apply rounded-xl border-2 border-slate-500 mx-2 px-4;
+  }
+  .feed-title {
+    @apply font-bold text-[1.5rem] mt-6;
+  }
+  .feed-des {
+    @apply text-gray-700 mt-4;
+  }
+  .feed-info {
+    @apply mt-3 flex justify-start;
+  }
+  .feed-info > div {
+    @apply mx-3;
+  }
+  .feed-info > div:first-of-type {
+    @apply ml-0;
+  }
+}
+
+@layer utilities {
+  .basic-font-color {
+    @apply text-gray-700 dark:text-white;
+  }
+  .basic-bg {
+    @apply bg-white dark:bg-[#1b1d1f];
   }
 }

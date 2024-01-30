@@ -25,7 +25,7 @@ const Header = () => {
   }, []);
 
   return (
-    <nav className="bg-gray-100 dark:bg-black w-full">
+    <nav>
       <div className="max-w-6xl mx-auto px-4">
         <div className="flex justify-between">
           {/* 메뉴 */}

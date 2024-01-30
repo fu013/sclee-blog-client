@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import React, { useState } from "react";
 
 const Main = () => {
@@ -7,7 +8,9 @@ const Main = () => {
       <div className="feed-menu-wrapper basic-font-color">
         <ol className="feed-menu">
           <li className="fm-li basic-font-color">Board(3)</li>
-          <li className="fm-li basic-font-color cursor-pointer">Write</li>
+          <li className="fm-li basic-font-color cursor-pointer">
+            <Link href="/editor">Write</Link>
+          </li>
         </ol>
       </div>
       <div className="feed-wrapper basic-font-color">

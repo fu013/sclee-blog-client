@@ -1,20 +1,19 @@
-import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "seungchan.log",
-  description: "Junior Full-Stack Developer",
+  title: "Editor",
+  description: "Writing a post on my blog",
 };
 
-const RootLayout = ({ children }: { children: React.ReactNode }) => {
+const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <html lang="en">
+    <div>
       <body className={inter.className}>{children}</body>
-    </html>
+    </div>
   );
 };
 
-export default RootLayout;
+export default Layout;

@@ -75,4 +75,16 @@ body {
   .fm-li:first-of-type {
     @apply border-b-2 border-blue-500;
   }
+  .feed-wrapper {
+    @apply text-black border-t-blue-50 p-5;
+  }
+  .feed-photo {
+    @apply border-t-blue-50 border-2 h-[10rem] w-full;
+  }
+  .tags {
+    @apply flex;
+  }
+  .tag {
+    @apply rounded-xl border-2 border-slate-500 mx-2 px-2;
+  }
 }

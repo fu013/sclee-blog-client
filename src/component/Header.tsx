@@ -1,10 +1,13 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import classNames from "classnames";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const Header = () => {
   const [menuToggle, setMenuToggle] = useState<boolean>(false);
   const [dark, setDark] = useState<boolean>(false);
+  const router = useRouter();
 
   const toggleDarkMode = () => {
     if (localStorage.getItem("theme") === "dark") {
@@ -29,7 +32,7 @@ const Header = () => {
       <div className="max-w-6xl mx-auto px-4">
         <div className="flex justify-between">
           {/* 메뉴 */}
-          <div className="flex space-x-4">
+          <div onClick={() => router.push("/")} className="flex space-x-4">
             <div>
               <a
                 href="#"

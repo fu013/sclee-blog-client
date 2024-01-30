@@ -8,12 +8,8 @@ export const metadata: Metadata = {
   description: "Writing a post on my blog",
 };
 
-const Layout = ({ children }: { children: React.ReactNode }) => {
-  return (
-    <div>
-      <body className={inter.className}>{children}</body>
-    </div>
-  );
+const EditorLayout = ({ children }: { children: React.ReactNode }) => {
+  return <div className="max-w-[1200px] mx-auto my-20">{children}</div>;
 };
 
-export default Layout;
+export default EditorLayout;

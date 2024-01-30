@@ -1,5 +1,11 @@
+import MyEditor from "@/component/Editor/MyEditor";
+
 const Home = () => {
-  return <>안녕하세요</>;
+  return (
+    <>
+      <MyEditor />
+    </>
+  );
 };
 
 export default Home;

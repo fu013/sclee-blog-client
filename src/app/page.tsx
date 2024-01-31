@@ -1,7 +1,7 @@
 import Aside from "@/component/Aside";
 import Main from "@/component/Main";
 
-const Home = () => {
+const Page = () => {
   return (
     <section>
       <Aside />
@@ -10,4 +10,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Page;

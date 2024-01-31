@@ -1,19 +1,9 @@
-import { SSGfetch } from "@/api/fetch";
+import { SSRfetch } from "@/api/fetch";
+import { iPost } from "@/interface";
 import Link from "next/link";
 
-interface iPost {
-  pk: number;
-  title: string;
-  content: string;
-  isPublic: string;
-  isReview: string;
-  comment: null | any;
-  updatedDate: string;
-  createdDate: string;
-}
-
 const Main = async () => {
-  const response = await SSGfetch("/post/all");
+  const response = await SSRfetch("/post/all");
   const jsonData: iPost[] = await response.json();
 
   return (

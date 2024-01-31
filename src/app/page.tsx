@@ -1,7 +1,7 @@
 import Aside from "@/component/Aside";
 import Main from "@/component/Main";
 
-const Page = () => {
+const RootPage = () => {
   return (
     <section>
       <Aside />
@@ -10,4 +10,4 @@ const Page = () => {
   );
 };
 
-export default Page;
+export default RootPage;

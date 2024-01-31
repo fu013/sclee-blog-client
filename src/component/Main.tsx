@@ -28,7 +28,11 @@ const Main = async () => {
       </div>
       {/* Post Item Start */}
       {jsonData?.map((item: iPost) => (
-        <div className="feed-wrapper basic-font-color" key={item.pk}>
+        <Link
+          href={`/post/${item.pk}`}
+          className="feed-wrapper basic-font-color"
+          key={item.pk}
+        >
           <div className="feed">
             <div className="feed-photo"></div>
             <h5 className="feed-title">{item.title}</h5>
@@ -47,7 +51,7 @@ const Main = async () => {
               <div>좋아요 4</div>
             </div>
           </div>
-        </div>
+        </Link>
       ))}
       {/* Post Item End */}
     </main>

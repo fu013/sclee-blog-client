@@ -6,7 +6,7 @@ const MyEditor = dynamic(() => import("@/component/Editor/MyEditor"), {
   ssr: false,
 });
 
-const Home = () => {
+const Page = () => {
   return (
     <>
       <MyEditor />
@@ -14,4 +14,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Page;

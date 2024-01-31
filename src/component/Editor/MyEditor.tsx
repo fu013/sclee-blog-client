@@ -20,6 +20,7 @@ const MyEditor = () => {
     ["code"],
     ["scrollSync"],
   ];
+
   const writePost = async () => {
     const editorIns = editorRef.current.getInstance();
     const contentHtml = editorIns.getHTML();

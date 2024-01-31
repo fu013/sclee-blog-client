@@ -6,9 +6,11 @@ import "@toast-ui/editor-plugin-color-syntax/dist/toastui-editor-plugin-color-sy
 import { Editor } from "@toast-ui/react-editor";
 import { useRef } from "react";
 import colorSyntax from "@toast-ui/editor-plugin-color-syntax";
+import { setPost } from "@/api/post";
 
 const MyEditor = () => {
   const editorRef = useRef(null);
+  const titleRef = useRef(null);
   const toolbarItems = [
     ["heading", "bold", "italic", "strike"],
     ["hr"],
@@ -18,11 +20,10 @@ const MyEditor = () => {
     ["code"],
     ["scrollSync"],
   ];
-
-  const showContent = () => {
+  const writePost = async () => {
     const editorIns = editorRef.current.getInstance();
     const contentHtml = editorIns.getHTML();
-    const contentMark = editorIns.getMarkdown();
+    await setPost(titleRef?.current?.value, contentHtml);
   };
 
   return (
@@ -31,13 +32,15 @@ const MyEditor = () => {
         <input
           type="file"
           className="border border-gray-300 outline-none py-3 px-3 mb-2 rounded"
+          placeholder="thumbnail"
           multiple
         />
       </div>
       <div>
         <input
           type="text"
-          placeholder="title"
+          placeholder="Enter the Title"
+          ref={titleRef}
           className="border border-gray-300 outline-none w-full py-3 px-3 mb-2 rounded"
         />
       </div>
@@ -56,7 +59,7 @@ const MyEditor = () => {
       <div className="text-right">
         <button
           className="border border-gray-100 cursor-pointer py-5 px-10 rounded bg-primary-1 text-blue-50 mt-3"
-          onClick={showContent}
+          onClick={writePost}
         >
           Write
         </button>

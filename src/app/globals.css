@@ -43,25 +43,25 @@
     @apply ease-in-out duration-300 transition-all bg-white dark:bg-[#1b1d1f] min-h-[100vh] p-0 m-0;
   }
   nav {
-    @apply ease-in-out duration-300 transition-all bg-gray-100 dark:bg-black w-full;
+    @apply ease-in-out duration-300 transition-all bg-white dark:bg-black w-full border-b-[#eee] border-b;
   }
   section {
-    @apply ease-in-out duration-300 transition-all flex h-auto mt-10 mx-auto max-w-[1200px] dark:bg-[#1b1d1f] justify-between relative overflow-hidden;
+    @apply ease-in-out duration-300 transition-all flex h-auto mt-20 mx-auto max-w-[1200px] dark:bg-[#1b1d1f] justify-between relative overflow-hidden;
   }
   aside {
-    @apply ease-in-out duration-300 transition-all h-fit min-w-[400px] max-w-[1200px] bg-white dark:bg-[#1b1d1f] mr-10 relative p-5;
+    @apply ease-in-out duration-300 transition-all h-fit min-w-[300px] max-w-[400px] bg-white dark:bg-[#1b1d1f] mr-24 relative;
   }
   main {
     @apply ease-in-out duration-300 transition-all bg-white dark:bg-[#1b1d1f] w-full h-auto relative p-5;
   }
   footer {
-    @apply ease-in-out duration-300 transition-all bg-white dark:bg-[#1b1d1f] border-t border-t-gray-300 dark:border-t-gray-600 h-[3rem] px-10 text-[13px] flex justify-end items-center text-gray-600 dark:text-gray-300;
+    @apply ease-in-out duration-300 transition-all bg-white dark:bg-[#1b1d1f] border-t border-t-[#eee] dark:border-t-[#eee] h-[3rem] px-10 text-[13px] flex justify-end items-center text-gray-600 dark:text-gray-300;
   }
 }
 
 @layer components {
   .card {
-    @apply w-full h-40 rounded-2xl p-1 relative border border-t-blue-50 flex justify-center items-center text-black bg-orange-300;
+    @apply w-[30vmin] h-[30vmin] max-h-60 max-w-60 rounded-[100%] p-1 relative border border-t-blue-50 flex justify-center items-center text-black bg-orange-300 mx-auto;
   }
   .ct-li {
     @apply my-3 text-[1.1rem] cursor-pointer;
@@ -70,19 +70,19 @@
     @apply border-2 border-slate-300 p-1 rounded bg-slate-100 text-black font-bold;
   }
   .feed-menu-wrapper {
-    @apply text-black dark:text-white font-bold text-[1.5rem] flex items-center justify-center w-full m-5;
+    @apply text-black dark:text-white font-bold text-[1.5rem] flex items-center justify-center w-full mb-10;
   }
   .feed-menu {
     @apply flex items-center justify-center;
   }
   .fm-li {
-    @apply px-10 pb-3 flex-1 whitespace-pre;
+    @apply px-10 pb-3 flex-1 whitespace-pre font-normal text-[1.1rem];
   }
-  .fm-li:first-of-type {
-    @apply border-b-2 border-blue-500;
+  .fm-li > span:first-of-type {
+    @apply font-bold;
   }
   .feed-wrapper {
-    @apply border-t-blue-50 p-5;
+    @apply border-b-[#eee] border-b block pb-[3rem] mb-[3rem];
   }
   .feed-photo {
     @apply border-t-blue-50 border-2 h-[25rem] w-full;
@@ -94,13 +94,13 @@
     @apply rounded-xl border-2 border-slate-500 mx-2 px-4;
   }
   .feed-title {
-    @apply font-bold text-[1.5rem] mt-6;
+    @apply font-bold text-[2rem] font-[#000000] text-balance mb-[1rem];
   }
   .feed-des {
-    @apply text-gray-700 mt-4;
+    @apply font-[#000] text-[1rem];
   }
   .feed-info {
-    @apply mt-3 flex justify-start;
+    @apply flex justify-start mb-[1rem] items-center;
   }
   .feed-info > div {
     @apply mx-3;

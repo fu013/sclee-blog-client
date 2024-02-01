@@ -5,12 +5,14 @@ import "tui-color-picker/dist/tui-color-picker.css";
 import "@toast-ui/editor-plugin-color-syntax/dist/toastui-editor-plugin-color-syntax.css";
 import { Editor } from "@toast-ui/react-editor";
 import { useRef } from "react";
-import colorSyntax from "@toast-ui/editor-plugin-color-syntax";
 import { setPost } from "@/api/post";
+import colorSyntax from "@toast-ui/editor-plugin-color-syntax";
 
 const MyEditor = () => {
   const editorRef = useRef(null);
   const titleRef = useRef(null);
+  const desRef = useRef(null);
+  const tagsRef = useRef(null);
   const toolbarItems = [
     ["heading", "bold", "italic", "strike"],
     ["hr"],
@@ -24,7 +26,12 @@ const MyEditor = () => {
   const writePost = async () => {
     const editorIns = editorRef.current.getInstance();
     const contentHtml = editorIns.getHTML();
-    await setPost(titleRef?.current?.value, contentHtml);
+    await setPost(
+      titleRef?.current?.value,
+      contentHtml,
+      desRef?.current?.value,
+      tagsRef?.current?.value
+    );
   };
 
   return (
@@ -42,6 +49,18 @@ const MyEditor = () => {
           type="text"
           placeholder="Enter the Title"
           ref={titleRef}
+          className="border border-gray-300 outline-none w-full py-3 px-3 mb-2 rounded"
+        />
+        <input
+          type="text"
+          placeholder="Enter the Desc"
+          ref={desRef}
+          className="border border-gray-300 outline-none w-full py-3 px-3 mb-2 rounded"
+        />
+        <input
+          type="text"
+          placeholder="Enter the Tags Split ','"
+          ref={tagsRef}
           className="border border-gray-300 outline-none w-full py-3 px-3 mb-2 rounded"
         />
       </div>

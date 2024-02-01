@@ -4,6 +4,8 @@ export interface iPost {
   content: string;
   isPublic: string;
   isReview: string;
+  description: string;
+  tags: string;
   comment: null | any;
   updatedDate: string;
   createdDate: string;

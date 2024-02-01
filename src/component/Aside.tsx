@@ -5,7 +5,7 @@ const Aside = () => {
   return (
     <aside>
       <div className="card">Profile</div>
-      <h5 className="text-gray-700 mt-5 basic-font-color">
+      <h5 className="text-gray-700 mt-5 basic-font-color mx-auto text-center">
         Memories may be forgotten, <br />
         but records are eternal
       </h5>

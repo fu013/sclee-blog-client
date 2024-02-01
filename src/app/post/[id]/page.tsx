@@ -1,6 +1,7 @@
 import { SSRfetch } from "@/api/fetch";
 import { iPost } from "@/interface";
 import React from "react";
+import "prismjs/themes/prism.css";
 
 interface iProps {
   params: {
@@ -14,8 +15,8 @@ const Page = async (props: iProps) => {
   return (
     <>
       <div>{data[0]?.title}</div>
-      <div
-        className="border border-rose-600 rounded-xl p-10 mt-5"
+      <article
+        className="prose prose-sm sm:prose-base dark:prose-invert max-w-none pb-20 mb-20 border-b border-gray-300"
         dangerouslySetInnerHTML={{ __html: data[0]?.content }}
       />
     </>

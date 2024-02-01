@@ -31,7 +31,7 @@ const Main = async () => {
   );
 
   return (
-    <main className="basic-bg">
+    <main>
       <div className="feed-menu-wrapper basic-font-color flex">
         <ol className="feed-menu">
           <li className="fm-li basic-font-color">

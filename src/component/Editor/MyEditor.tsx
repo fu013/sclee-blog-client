@@ -118,7 +118,7 @@ const MyEditor = () => {
           useCommandShortcut={true}
           useDefaultHTMLSanitizer={false}
           toolbarItems={toolbarItems}
-          plugins={[colorSyntax]}
+          plugins={[colorSyntax, [codeSyntaxHighlight, { highlighter: Prism }]]}
         />
       )}
       <div className="text-right">

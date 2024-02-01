@@ -77,10 +77,20 @@ const Header = () => {
               </a>
             </div>
             <div
-              className="py-2 px-3 bg-yellow-400 hover:bg-yellow-300 text-yellow-900 hover:text-yellow-800 rounded transition duration-300 cursor-pointer"
+              className="ease-in-out duration-300 transition-all rounded-[100%] cursor-pointer p-1.5 hover:bg-[#f1f1f1] dark:hover:bg-[#aaa]"
               onClick={() => toggleDarkMode()}
             >
-              <span>{dark ? "Dark" : "Light"}</span>
+              {dark ? (
+                <img
+                  className="w-[24px] ease-in-out duration-300 transition-all"
+                  src="/moon_w.png"
+                />
+              ) : (
+                <img
+                  className="w-[24px] ease-in-out duration-300 transition-all"
+                  src="/sun.png"
+                />
+              )}
             </div>
           </div>
 

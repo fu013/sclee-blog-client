@@ -1,22 +1,16 @@
 "use client";
-
-import Prism from "prismjs";
-import "@toast-ui/editor/dist/i18n/ko-kr";
-import codeSyntaxHighlight from "@toast-ui/editor-plugin-code-syntax-highlight";
 import "@toast-ui/editor-plugin-code-syntax-highlight/dist/toastui-editor-plugin-code-syntax-highlight.css";
 import "@toast-ui/editor-plugin-color-syntax/dist/toastui-editor-plugin-color-syntax.css";
 import "@toast-ui/editor/dist/toastui-editor.css";
 import "@toast-ui/editor/dist/theme/toastui-editor-dark.css";
 import "tui-color-picker/dist/tui-color-picker.css";
+import codeSyntaxHighlight from "@toast-ui/editor-plugin-code-syntax-highlight";
+import colorSyntax from "@toast-ui/editor-plugin-color-syntax";
 import { Editor, PreviewStyle } from "@toast-ui/react-editor";
 import { MutableRefObject, useEffect, useRef, useState } from "react";
 import { setPost } from "@/api/post";
-import colorSyntax from "@toast-ui/editor-plugin-color-syntax";
+import Prism from "prismjs";
 import "prismjs/themes/prism.css";
-import codeSyntaxHighlightPlugin from "@toast-ui/editor-plugin-code-syntax-highlight";
-import "tui-color-picker/dist/tui-color-picker.css";
-import hljs from "highlight.js";
-import "highlight.js/styles/github.css";
 
 const MyEditor = () => {
   const editorRef = useRef(null);
@@ -26,6 +20,10 @@ const MyEditor = () => {
   const [preview, setPreview] = useState<PreviewStyle>(
     window.innerWidth > 1000 ? "vertical" : "tab"
   );
+
+  useEffect(() => {
+    Prism.highlightAll();
+  }, []);
 
   const toolbarItems = [
     ["heading", "bold", "italic", "strike"],
@@ -105,16 +103,16 @@ const MyEditor = () => {
         height="calc(100vh - 380px)"
         theme={""} // '' & 'dark'
         usageStatistics={false}
+        useCommandShortcut={false}
+        useDefaultHTMLSanitizer={false}
         toolbarItems={toolbarItems}
-        useCommandShortcut={true}
-        language="ko-KR"
         /* plugins={[
           codeSyntaxHighlightPlugin.bind(hljs),
           codeSyntaxHighlight,
           colorSyntax,
         ]} */
+
         plugins={[colorSyntax, [codeSyntaxHighlight, { highlighter: Prism }]]}
-        useDefaultHTMLSanitizer={true}
       />
       <div className="text-right">
         <button

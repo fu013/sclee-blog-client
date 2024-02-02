@@ -59,7 +59,7 @@ const Main = async () => {
           key={item.pk}
         >
           <img
-            className="w-[12.5rem] h-[12.5rem] mr-10 border border-[#ccc] rounded-xl"
+            className="w-[12.5rem] h-[12.5rem] mr-10 border border-[#ccc] dark:border-[#454c53] rounded-xl"
             src="https://static.toss.im/assets/payments/contents/writer-2-thumb.jpg"
             alt="thumbnail"
           />

@@ -18,7 +18,7 @@ const Aside = () => {
           Category
         </h5>
         <ul className="text-gray-700 basic-font-color">
-          <li className="ct-li">All(3)</li>
+          <li className="ct-li basic-font-color">All(3)</li>
           <li className="ct-li">Daily</li>
           <li className="ct-li">Dev</li>
           <li className="ct-li">Game</li>

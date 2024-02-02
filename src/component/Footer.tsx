@@ -1,5 +1,9 @@
 const Footer = () => {
-  return <footer>2024 Seungchan dev.</footer>;
+  return (
+    <footer>
+      <div className="mx-auto w-[75rem] text-right">2024 Seungchan dev.</div>
+    </footer>
+  );
 };
 
 export default Footer;

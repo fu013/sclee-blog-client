@@ -67,30 +67,34 @@ const MyEditor = () => {
   }, []);
 
   useEffect(() => {
+    const addImageBlobHook = async (
+      blob: Blob,
+      callback: (imageUrl: string, type: string) => void
+    ) => {
+      const formData = new FormData();
+      formData.append("img", blob);
+
+      try {
+        const { data: filenames } = await axios.post<string[]>(
+          `${process.env.NEXT_PUBLIC_SERVER_URL}/post/addImage`,
+          formData,
+          { headers: { "content-type": "multipart/form-data" } }
+        );
+
+        for (const filename of filenames) {
+          const imageUrl = `${process.env.NEXT_PUBLIC_IMAGE_PREVIEW_URL}/${filename}`;
+          callback(imageUrl, "image");
+        }
+      } catch (error) {
+        console.error("Error uploading image:", error);
+      }
+      return false;
+    };
+
     if (editorRef.current) {
-      // 기존 Image Import Hook 제거
-      editorRef.current.getInstance().removeHook("addImageBlobHook");
-      editorRef.current
-        .getInstance()
-        .addHook("addImageBlobHook", (blob, callback) => {
-          (async () => {
-            const formData = new FormData();
-            formData.append("img", blob);
-
-            const { data: filename } = await axios.post(
-              // 서버에 저장할 로직을 수행하는 API호출
-              `${process.env.NEXT_PUBLIC_SERVER_URL + "/post/addImage"}`,
-              formData,
-              { headers: { "content-type": "multipart/formdata" } }
-            );
-
-            // 이미지가 저장될 서버 경로
-            const imageUrl = `${process.env.NEXT_PUBLIC_IMAGE_URL}/${filename.filename}`;
-            // 미리보기 이미지를 가져옴
-            callback(imageUrl, "image");
-          })();
-          return false;
-        });
+      const editorInstance = editorRef.current.getInstance();
+      editorInstance.removeHook("addImageBlobHook");
+      editorInstance.addHook("addImageBlobHook", addImageBlobHook);
     }
   }, [editorRef]);
 

@@ -67,7 +67,7 @@
     @apply my-3 text-[1.1rem] cursor-pointer;
   }
   .ct-li:first-of-type {
-    @apply border-2 border-slate-300 p-1 rounded bg-slate-100 text-black font-bold;
+    @apply /* border-2 border-slate-300 p-1 rounded bg-slate-100 */ text-black font-bold;
   }
   .feed-menu-wrapper {
     @apply text-black dark:text-white font-bold text-[1.5rem] flex items-center justify-center w-full mb-10;
@@ -78,11 +78,11 @@
   .fm-li {
     @apply px-10 pb-3 flex-1 whitespace-pre font-normal text-[1.1rem];
   }
-  .fm-li > span:first-of-type {
+  /* .fm-li > span:first-of-type {
     @apply font-bold;
-  }
+  } */
   .feed-wrapper {
-    @apply border-b-[#eee] border-b-[1px] rounded-[4px] block pb-[3rem] m-[1.5rem] mb-[3rem];
+    @apply border-b-[#eee] border-b-[1px] rounded-[4px] block pb-[2.5rem] m-[1.25rem] mb-[2.5rem];
   }
   .tags {
     @apply flex my-6;

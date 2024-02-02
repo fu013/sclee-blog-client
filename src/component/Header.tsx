@@ -28,14 +28,14 @@ const Header = () => {
 
   return (
     <nav>
-      <div className="max-w-6xl mx-auto px-4">
+      <div className="max-w-6xl mx-auto">
         <div className="flex justify-between">
           {/* 메뉴 */}
           <div onClick={() => router.push("/")} className="flex space-x-4">
             <div>
               <a
                 href="#"
-                className="flex items-center py-5 px-2 text-gray-700 dark:text-white"
+                className="flex items-center py-5 text-gray-700 dark:text-white"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -49,7 +49,9 @@ const Header = () => {
                     clipRule="evenodd"
                   />
                 </svg>
-                <span className="font-bold">SEUNGCHAN.LOG</span>
+                <span className="text-logo italic text-lightColor font-bold dark:text-darkColor text-[1.75rem] ease duration-300 transition-all">
+                  SEUNGCHAN
+                </span>
               </a>
             </div>
           </div>

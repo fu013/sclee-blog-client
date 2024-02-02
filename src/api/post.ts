@@ -4,7 +4,8 @@ const setPost = async (
   title: string,
   content: string,
   description: string,
-  tags: string
+  tags: string,
+  imageArr: string[]
 ) => {
   try {
     await myAxios.post("/post/set", {
@@ -12,6 +13,7 @@ const setPost = async (
       content: content,
       description: description,
       tags: tags,
+      imageArr: imageArr,
     });
     alert("포스트가 성공적으로 저장되었습니다.");
     location.href = "/";

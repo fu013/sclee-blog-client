@@ -23,6 +23,7 @@ const MyEditor = () => {
   const titleRef = useRef(null);
   const desRef = useRef(null);
   const tagsRef = useRef(null);
+  let imageArr = useRef<string[]>([]);
   const [preview, setPreview] = useState<PreviewStyle>(
     window.innerWidth > 1000 ? "vertical" : "tab"
   );
@@ -50,7 +51,8 @@ const MyEditor = () => {
       titleRef?.current?.value,
       contentHtml,
       desRef?.current?.value,
-      tagsRef?.current?.value
+      tagsRef?.current?.value,
+      imageArr?.current
     );
   };
 
@@ -73,18 +75,17 @@ const MyEditor = () => {
     ) => {
       const formData = new FormData();
       formData.append("img", blob);
-
       try {
         const { data: filenames } = await axios.post<string[]>(
           `${process.env.NEXT_PUBLIC_SERVER_URL}/post/addImage`,
           formData,
           { headers: { "content-type": "multipart/form-data" } }
         );
-
         for (const filename of filenames) {
           const imageUrl = `${process.env.NEXT_PUBLIC_IMAGE_PREVIEW_URL}/${filename}`;
           callback(imageUrl, "image");
         }
+        imageArr.current = filenames;
       } catch (error) {
         console.error("Error uploading image:", error);
       }
@@ -96,6 +97,22 @@ const MyEditor = () => {
       editorInstance.removeHook("addImageBlobHook");
       editorInstance.addHook("addImageBlobHook", addImageBlobHook);
     }
+
+    return () => {
+      /* 만약 이미지 배열이 존재한다면(임시 이미지), 페이지를 떠날 때, API 이미지 삭제 요청을 보냄 */
+      if (imageArr.current.length > 0) {
+        axios
+          .delete(
+            `${process.env.NEXT_PUBLIC_SERVER_URL}/post/delImage?filenames=${imageArr.current}`
+          )
+          .then(() => {
+            console.log("DELETE request successful");
+          })
+          .catch((error) => {
+            console.error("Error sending DELETE request:", error);
+          });
+      }
+    };
   }, [editorRef]);
 
   return (

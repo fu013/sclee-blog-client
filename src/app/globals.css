@@ -49,10 +49,10 @@
     @apply ease-in-out duration-300 transition-all flex h-auto mt-20 mb-20 mx-auto max-w-[1200px] justify-between relative overflow-hidden;
   }
   aside {
-    @apply ease-in-out duration-300 transition-all h-fit min-w-[15rem] max-w-[25rem] mr-28 relative;
+    @apply ease-in-out duration-300 transition-all h-fit min-w-[15rem] max-w-[25rem] ml-10 relative;
   }
   main {
-    @apply ease-in-out duration-300 transition-all w-full h-auto relative p-5;
+    @apply ease-in-out duration-300 transition-all w-full h-auto relative;
   }
   footer {
     @apply ease-in-out duration-300 transition-all border-t border-t-[#eee] dark:border-t-[#eee] h-[3rem] px-16 text-[13px] flex justify-end items-center text-gray-600 dark:text-gray-300;
@@ -61,7 +61,7 @@
 
 @layer components {
   .card {
-    @apply w-[30vmin] h-[30vmin] max-h-60 max-w-60 rounded-[100%] p-1 relative border border-t-blue-50 flex justify-center items-center text-black bg-orange-300 mx-auto;
+    @apply w-[30vmin] h-[30vmin] max-h-40 max-w-40 rounded-[100%] p-1 relative border border-t-blue-50 flex justify-center items-center text-black bg-orange-300 mx-auto;
   }
   .ct-li {
     @apply my-3 text-[1.1rem] cursor-pointer;
@@ -82,10 +82,7 @@
     @apply font-bold;
   }
   .feed-wrapper {
-    @apply border-b-[#eee] /* border-[3px]  */rounded-[4px] block p-[1.5rem] pb-[3rem] m-[1.5rem] mb-[3rem];
-  }
-  .feed-photo {
-    @apply border-t-blue-50 border-2 h-[25rem] w-full;
+    @apply border-b-[#eee] border-b-[1px] rounded-[4px] block pb-[3rem] m-[1.5rem] mb-[3rem];
   }
   .tags {
     @apply flex my-6;

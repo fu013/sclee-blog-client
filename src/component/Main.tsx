@@ -51,10 +51,11 @@ const Main = async () => {
       {/* Post Item Start */}
       {jsonData?.map((item: iPost) => (
         <Link
-          href={`/post/${item.pk}`}
-          className="feed-wrapper basic-font-color shadow-[0_2px_4px_0_#ccd0d9]"
+          href={`/post/${item.pk}`} //shadow-[0_2px_4px_0_#ccd0d9]
+          className="feed-wrapper basic-font-color flex"
           key={item.pk}
         >
+          <div className="w-[10rem] h-[10rem] mr-10 border border-[#ccc] rounded-xl"></div>
           <span className="feed btn-6 ">
             <div className="feed-info">
               <div className="border-[3px] font-bold py-2 px-2 text-[0.75rem] border-indigo-900 rounded-full">

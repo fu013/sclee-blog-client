@@ -4,8 +4,8 @@ import Main from "@/component/Main";
 const RootPage = () => {
   return (
     <section>
-      <Aside />
       <Main />
+      <Aside />
     </section>
   );
 };

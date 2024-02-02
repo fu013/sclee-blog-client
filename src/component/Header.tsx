@@ -69,12 +69,12 @@ const Header = () => {
               >
                 Blog
               </a>
-              <a
+              {/* <a
                 href="#"
                 className="py-5 px-3 text-gray-700 dark:text-white hover:text-gray-900"
               >
                 GuestBook
-              </a>
+              </a> */}
             </div>
             <div
               className="ease-in-out duration-300 transition-all rounded-[100%] cursor-pointer p-1.5 hover:bg-[#f1f1f1] dark:hover:bg-[#aaa]"

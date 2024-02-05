@@ -14,7 +14,7 @@ import Prism from "prismjs";
 import "prismjs/components/prism-clojure.js";
 import axios from "axios";
 
-const MyEditor = () => {
+const MyEditor = ({ id }: { id?: number }) => {
   const editorRef = useRef(null);
   const titleRef = useRef(null);
   const desRef = useRef(null);
@@ -111,7 +111,7 @@ const MyEditor = () => {
     };
   }, [editorRef]);
 
-  return (
+  return id === null ? (
     <div className="p-5">
       <div>
         <input
@@ -166,7 +166,7 @@ const MyEditor = () => {
         </button>
       </div>
     </div>
-  );
+  ) : null;
 };
 
 export default MyEditor;

@@ -15,5 +15,6 @@ Back-end: Spring 3.2
 - 페이지에 html은 쓰지 않고 컴포넌트로 분리해서 최종 결과물만 controller와 비슷한 역할로, 컴포넌트로 파라미터만 전달함
 
 Stack
-frontend: nextjs, tailwind
+frontend: typescript, nextjs, tailwind
 backend: java, spring, jpa
+deploy: docker, jenkins, Home-server

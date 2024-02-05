@@ -2,6 +2,7 @@ import { SSRfetch } from "@/api/fetch";
 import { iPost } from "@/interface";
 import Link from "next/link";
 import TagTransformer from "./Common/TagTransformer";
+import moment from "moment";
 
 const Main = async () => {
   const response = await SSRfetch("/post/all");
@@ -57,7 +58,7 @@ const Main = async () => {
           <span className="feed btn-6 ">
             <div className="feed-info">
               <div className="border-[3px] font-bold py-2 px-2 text-[0.75rem] border-indigo-900 rounded-full">
-                2024/02/01
+                {moment(item?.createdDate).format("YYYY/MM/DD")}
               </div>
               <div>{TagTransformer(item.tags)}</div>
             </div>

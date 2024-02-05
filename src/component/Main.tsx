@@ -1,22 +1,13 @@
 import { SSRfetch } from "@/api/fetch";
 import { iPost } from "@/interface";
 import Link from "next/link";
-
-// 태그 문자열 span으로 분리하기
-const TagTransformer = (tags: string) => {
-  if (!tags) return false;
-  const tagsArray = tags.split(",");
-  const transformedTags = tagsArray.map((tag, index) => (
-    <span key={index}>#{tag.trim()} </span>
-  ));
-  return <>{transformedTags}</>;
-};
+import TagTransformer from "./Common/TagTransformer";
 
 const Main = async () => {
   const response = await SSRfetch("/post/all");
   const jsonData: iPost[] = await response.json();
 
-  // 배열을 순차적으로 순회하며 맵을 만듬, 중복값이 있는지 찾고, 없으면 Key로 추가, 이미 있으면 key value를 + 1함, 중복 제거된 맵을 반환
+  // 배열을 순차적으로 순회하며 맵을 만듬, 중복값이 있는지 찾고, 없으면 Key로 추가, 이미 있으면 key value를 + 1함, 최종적으로 중복 제거된 맵을 반환
   const totalTags = jsonData.reduce(
     (accumulator: Map<string, number>, currentItem: any) => {
       const tagsArray = currentItem.tags?.split(",");

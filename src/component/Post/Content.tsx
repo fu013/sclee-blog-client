@@ -11,7 +11,9 @@ const Content = async ({ data }: { data: iPost[] }) => {
       <div className="mb-4 text-s sm:text-md text-gray-500">
         {TagTransformer(data[0]?.tags)}
       </div>
-      <div className="font-[900] text-[2rem]">{data[0]?.title}</div>
+      <div className="font-[900] text-[2rem] basic-font-color">
+        {data[0]?.title}
+      </div>
       <div className="flex justify-end">
         <div className="text-sm sm:text-md text-gray-500">
           {moment(data[0]?.createdDate).format("YYYY-MM-DD HH:mm:ss")}

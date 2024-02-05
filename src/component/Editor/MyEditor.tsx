@@ -11,7 +11,6 @@ import { setPost } from "@/api/post";
 import { Editor } from "@toast-ui/react-editor";
 import { PreviewStyle } from "@toast-ui/react-editor";
 import Prism from "prismjs";
-import "prismjs/themes/prism.css";
 import "prismjs/components/prism-clojure.js";
 import axios from "axios";
 /* import codeSyntaxHighlightPlugin from "@toast-ui/editor-plugin-code-syntax-highlight";

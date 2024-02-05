@@ -1,7 +1,6 @@
 import { SSRfetch } from "@/api/fetch";
 import { iPost } from "@/interface";
 import React from "react";
-import "prismjs/themes/prism.css";
 
 interface iProps {
   params: {

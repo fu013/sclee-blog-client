@@ -1,5 +1,7 @@
 import Header from "@/component/Header";
 import "./globals.css";
+
+import "./prism.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Footer from "@/component/Footer";

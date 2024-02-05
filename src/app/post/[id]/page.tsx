@@ -15,7 +15,7 @@ const Page = async (props: iProps) => {
   const data: iPost[] = await response.json();
 
   return (
-    <div className="relative w-full h-auto flex overflow-hidden desktop:left-[150px] mobile-left-auto">
+    <div className="relative w-full h-auto flex desktop:left-[150px] mobile-left-auto">
       <Content data={data} />
       <Toc htmlString={data[0]?.content} />
     </div>

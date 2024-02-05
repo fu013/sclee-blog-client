@@ -34,7 +34,7 @@ const Toc: React.FC<TocProps> = ({ htmlString }) => {
   }, [htmlString]);
 
   return (
-    <div className="sticky top-28 py-10 pl-4 desktop:block mobile:hidden">
+    <div className="sticky top-28 py-10 px-5 desktop:block mobile:hidden h-full">
       TOC
       {tocList.map((toc, index) => (
         <div

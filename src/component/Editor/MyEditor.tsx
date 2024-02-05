@@ -13,9 +13,6 @@ import { PreviewStyle } from "@toast-ui/react-editor";
 import Prism from "prismjs";
 import "prismjs/components/prism-clojure.js";
 import axios from "axios";
-/* import codeSyntaxHighlightPlugin from "@toast-ui/editor-plugin-code-syntax-highlight";
-import "highlight.js/styles/github.css";
-import hljs from "highlight.js"; */
 
 const MyEditor = () => {
   const editorRef = useRef(null);

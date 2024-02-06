@@ -5,6 +5,8 @@ import "./prism.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Footer from "@/component/Footer";
+import { Suspense } from "react";
+import SkHeader from "@/Skeletion/SkHeader";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,7 +19,9 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Header />
+        <Suspense fallback={<SkHeader />}>
+          <SkHeader />
+        </Suspense>
         <>{children}</>
         <Footer />
       </body>

@@ -1,8 +1,9 @@
+import SkContent from "@/Skeletion/SkContent";
 import { SSRfetch } from "@/api/fetch";
 import Content from "@/component/Post/Content";
 import Toc from "@/component/Post/Toc";
 import { iPost } from "@/interface";
-import React from "react";
+import React, { Suspense } from "react";
 
 interface iProps {
   params: {
@@ -16,8 +17,10 @@ const Page = async (props: iProps) => {
 
   return (
     <div className="relative w-full h-auto flex desktop:left-[150px] mobile-left-auto">
-      <Content data={data} />
-      <Toc htmlString={data[0]?.content} />
+      <Suspense fallback={<SkContent data={data} />}>
+        <Content data={data} />
+        <Toc htmlString={data[0]?.content} />
+      </Suspense>
     </div>
   );
 };

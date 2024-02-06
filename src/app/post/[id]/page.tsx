@@ -1,4 +1,4 @@
-import SkContent from "@/Skeletion/SkContent";
+import SkContent from "@/skeletion/SkContent";
 import { SSRfetch } from "@/api/fetch";
 import Content from "@/component/Post/Content";
 import Toc from "@/component/Post/Toc";

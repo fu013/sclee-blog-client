@@ -1,5 +1,5 @@
-import Skaside from "@/Skeletion/SkAside";
-import SkMain from "@/Skeletion/SkMain";
+import Skaside from "@/skeletion/SkAside";
+import SkMain from "@/skeletion/SkMain";
 import Aside from "@/component/Aside";
 import Main from "@/component/Main";
 import { Suspense } from "react";

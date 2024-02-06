@@ -111,7 +111,7 @@ const MyEditor = ({ id }: { id?: number }) => {
     };
   }, [editorRef]);
 
-  return id === null ? (
+  return id !== null ? (
     <div className="p-5">
       <div>
         <input

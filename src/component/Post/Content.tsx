@@ -1,11 +1,30 @@
 import TagTransformer from "@/component/Common/TagTransformer";
 import { iPost } from "@/interface";
 import moment from "moment";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Review from "./Review";
 import Link from "next/link";
+import { JSDOM } from "jsdom";
 
 const Content = async ({ data }: { data: iPost[] }) => {
+  let modifiedHtmlString;
+  const parseHTML = () => {
+    if (data[0]?.content) {
+      const dom = new JSDOM(data[0]?.content);
+      const document = dom.window.document;
+      const headings = document.querySelectorAll("h1, h2, h3");
+      let id = 0;
+
+      headings.forEach((heading: any) => {
+        heading.setAttribute("id", `heading-${id}`);
+        id++;
+      });
+
+      modifiedHtmlString = dom.serialize();
+    }
+  };
+  parseHTML();
+
   return (
     <div className="max-w-[900px] w-full p-[1.6rem] mx-auto h-fit relative rounded-lg overflow-hidden">
       <div className="mb-4 text-s sm:text-md text-gray-500">
@@ -27,8 +46,9 @@ const Content = async ({ data }: { data: iPost[] }) => {
       <hr className="mt-4 mb-16" />
       <article
         className="prose prose-sm sm:prose-base dark:prose-invert max-w-none pb-20 mb-20 border-b border-gray-300"
-        dangerouslySetInnerHTML={{ __html: data[0]?.content }}
+        dangerouslySetInnerHTML={{ __html: modifiedHtmlString! }}
       />
+
       <Review />
     </div>
   );

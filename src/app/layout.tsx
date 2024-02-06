@@ -7,6 +7,7 @@ import { Inter } from "next/font/google";
 import Footer from "@/component/Footer";
 import { Suspense } from "react";
 import SkHeader from "@/skeletion/SkHeader";
+import Providers from "./provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,11 +20,13 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Suspense fallback={<SkHeader />}>
-          <Header />
-        </Suspense>
-        <>{children}</>
-        <Footer />
+        <Providers>
+          <Suspense fallback={<SkHeader />}>
+            <Header />
+          </Suspense>
+          <>{children}</>
+          <Footer />
+        </Providers>
       </body>
     </html>
   );

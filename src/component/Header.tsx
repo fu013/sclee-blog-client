@@ -3,30 +3,14 @@ import React, { useEffect, useLayoutEffect, useState } from "react";
 import classNames from "classnames";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { useTheme } from "next-themes";
 
 const Header = () => {
   const [menuToggle, setMenuToggle] = useState<boolean>(false);
-  const [dark, setDark] = useState<boolean>(false);
   const router = useRouter();
 
-  const toggleDarkMode = () => {
-    if (localStorage.getItem("theme") === "dark") {
-      localStorage.removeItem("theme");
-      document.documentElement.classList.remove("dark");
-      setDark(false);
-    } else {
-      document.documentElement.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-      setDark(true);
-    }
-  };
-
-  useEffect(() => {
-    toggleDarkMode();
-    if (localStorage.getItem("theme") === "dark") {
-      document.documentElement.classList.add("dark");
-    }
-  }, []);
+  const { systemTheme, theme, setTheme } = useTheme();
+  const currentTheme = theme === "system" ? systemTheme : theme;
 
   return (
     <nav>
@@ -82,9 +66,11 @@ const Header = () => {
             </div>
             <div
               className="ease-in-out duration-300 transition-all rounded-[100%] cursor-pointer p-1.5 hover:bg-[#f1f1f1] dark:hover:bg-[#aaa]"
-              onClick={() => toggleDarkMode()}
+              onClick={() => {
+                setTheme(currentTheme === "dark" ? "light" : "dark");
+              }}
             >
-              {dark ? (
+              {currentTheme === "dark" ? (
                 <img
                   className="w-[24px] ease-in-out duration-300 transition-all"
                   src="/moon_w.png"

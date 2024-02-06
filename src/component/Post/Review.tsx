@@ -58,7 +58,7 @@ const Review = ({ onSubmit }: CommentInputProps) => {
             onChange={() => setIsSecret(!isSecret)}
             className="ml-2 w-[1rem] h-[1rem] relative top-[2px] cursor-pointer"
           />
-          <span className="ml-1 text-[14px]">비밀글(관리자만 볼 수 있음)</span>
+          <span className="ml-1 text-[14px]">비밀글</span>
         </label>
         {isSecret && (
           <div className="mt-2">

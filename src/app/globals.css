@@ -98,9 +98,6 @@
   .ct-li {
     @apply my-3 text-[1.1rem] cursor-pointer;
   }
-  .ct-li:first-of-type {
-    @apply /* border-2 border-slate-300 p-1 rounded bg-slate-100 */ text-black font-bold;
-  }
   .feed-menu-wrapper {
     @apply text-black dark:text-white font-bold text-[1.5rem] flex items-center justify-center w-full mb-10;
   }

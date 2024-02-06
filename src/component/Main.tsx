@@ -1,48 +1,11 @@
-import { SSRfetch } from "@/api/fetch";
 import { iPost } from "@/interface";
 import Link from "next/link";
 import TagTransformer from "./Common/TagTransformer";
 import moment from "moment";
 
-const Main = async () => {
-  const response = await SSRfetch("/post/all");
-  const jsonData: iPost[] = await response.json();
-
-  // 배열을 순차적으로 순회하며 맵을 만듬, 중복값이 있는지 찾고, 없으면 Key로 추가, 이미 있으면 key value를 + 1함, 최종적으로 중복 제거된 맵을 반환
-  const totalTags = jsonData.reduce(
-    (accumulator: Map<string, number>, currentItem: any) => {
-      const tagsArray = currentItem.tags?.split(",");
-      tagsArray?.forEach((tag: string) => {
-        const trimmedTag = tag.trim();
-        const currentValue = accumulator.get(trimmedTag) || 0;
-        accumulator.set(trimmedTag, currentValue + 1);
-      });
-      return accumulator;
-    },
-    new Map<string, number>()
-  );
-
+const Main = async ({ jsonData }: { jsonData: iPost[] }) => {
   return (
     <main>
-      <div className="feed-menu-wrapper basic-font-color flex mb-20">
-        <ol className="feed-menu">
-          <li className="fm-li basic-font-color">
-            {/* <span className="font-bold">All Tags({totalTags.size})</span> */}
-            {Array.from(totalTags.entries()).map(([tag, count]) => (
-              <span
-                key={tag}
-                className="px-2 border inline-block border-[#ccc] py-1 px-4 rounded-2xl mx-2 text-[13px] cursor-pointer"
-              >
-                {tag}
-                {count > 1 ? `(${count})` : null}
-              </span>
-            ))}
-            <span className="font-bold px-2 border inline-block border-[#ccc] py-1 px-4 rounded-2xl mx-2 text-[13px] cursor-pointer">
-              <Link href="/blog/editor">Posting</Link>
-            </span>
-          </li>
-        </ol>
-      </div>
       {/* Post Item Start */}
       {jsonData?.map((item: iPost) => (
         <Link

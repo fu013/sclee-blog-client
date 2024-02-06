@@ -3,15 +3,19 @@ import SkMain from "@/skeletion/SkMain";
 import Aside from "@/component/Aside";
 import Main from "@/component/Main";
 import { Suspense } from "react";
+import { SSRfetch } from "@/api/fetch";
+import { iPost } from "@/interface";
 
-const Page = () => {
+const Page = async () => {
+  const response = await SSRfetch("/post/all");
+  const jsonData: iPost[] = await response.json();
   return (
     <section>
       <Suspense fallback={<SkMain />}>
-        <Main />
+        <Main jsonData={jsonData} />
       </Suspense>
       <Suspense fallback={<Skaside />}>
-        <Aside />
+        <Aside jsonData={jsonData} />
       </Suspense>
     </section>
   );

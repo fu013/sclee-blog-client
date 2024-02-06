@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import classNames from "classnames";
 import { useRouter } from "next/navigation";
 
@@ -21,6 +21,7 @@ const Header = () => {
   };
 
   useEffect(() => {
+    toggleDarkMode();
     if (localStorage.getItem("theme") === "dark") {
       document.documentElement.classList.add("dark");
     }

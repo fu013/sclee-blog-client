@@ -1,8 +1,5 @@
 import { SSRfetch } from "@/api/fetch";
 import { iPost } from "@/interface";
-import Link from "next/link";
-import moment from "moment";
-import TagTransformer from "@/component/Common/TagTransformer";
 import Skeleton from "./Skeletion";
 
 const SkMain = async () => {

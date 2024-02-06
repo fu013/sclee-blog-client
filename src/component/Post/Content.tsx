@@ -48,7 +48,6 @@ const Content = async ({ data }: { data: iPost[] }) => {
         className="prose prose-sm sm:prose-base dark:prose-invert max-w-none pb-20 mb-20 border-b border-gray-300"
         dangerouslySetInnerHTML={{ __html: modifiedHtmlString! }}
       />
-
       <Review />
     </div>
   );

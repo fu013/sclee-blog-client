@@ -2,7 +2,7 @@ import Skeleton from "./Skeletion";
 
 const SkHeader = () => {
   return (
-    <nav className="pt-2">
+    <nav className="pt-6">
       <div className="max-w-6xl mx-auto">
         <div className="flex justify-between items-center">
           {/* 메뉴 */}

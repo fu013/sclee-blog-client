@@ -23,7 +23,7 @@ const SkContent = async ({ data }: { data: iPost[] }) => {
       <hr className="mt-4 mb-16" />
       <article
         className="prose prose-sm sm:prose-base dark:prose-invert max-w-none pb-20 mb-20 border-b border-gray-300"
-        dangerouslySetInnerHTML={{ __html: data[0].content! }}
+        dangerouslySetInnerHTML={{ __html: data[0].html! }}
       />
     </div>
   );

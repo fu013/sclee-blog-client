@@ -1,7 +1,8 @@
 export interface iPost {
   pk: number;
   title: string;
-  content: string;
+  html: string;
+  markdown: string;
   isPublic: string;
   isReview: string;
   description: string;

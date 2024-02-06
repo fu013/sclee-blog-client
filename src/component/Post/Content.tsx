@@ -1,16 +1,22 @@
 import TagTransformer from "@/component/Common/TagTransformer";
 import { iPost } from "@/interface";
 import moment from "moment";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Review from "./Review";
 import Link from "next/link";
 import { JSDOM } from "jsdom";
 
-const Content = async ({ data }: { data: iPost[] }) => {
+const Content = async ({
+  data,
+  querystring,
+}: {
+  data: iPost[];
+  querystring: number;
+}) => {
   let modifiedHtmlString;
   const parseHTML = () => {
-    if (data[0]?.content) {
-      const dom = new JSDOM(data[0]?.content);
+    if (data[0]?.html) {
+      const dom = new JSDOM(data[0]?.html);
       const document = dom.window.document;
       const headings = document.querySelectorAll("h1, h2, h3");
       let id = 0;
@@ -35,7 +41,7 @@ const Content = async ({ data }: { data: iPost[] }) => {
       </div>
       <div className="text-sm sm:text-md text-gray-500 flex items-center justify-between">
         <Link
-          href="/editor/update"
+          href={`/post/update/${querystring}`}
           className="bg-blue-500 text-white py-1 px-2 rounded text-[13px]"
           type="button"
         >

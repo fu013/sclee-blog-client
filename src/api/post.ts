@@ -2,7 +2,8 @@ import { myAxios } from "./myAxios";
 
 const setPost = async (
   title: string,
-  content: string,
+  html: string,
+  markdown: string,
   description: string,
   tags: string,
   imageArr: string[]
@@ -10,7 +11,8 @@ const setPost = async (
   try {
     await myAxios.post("/post/set", {
       title: title,
-      content: content,
+      html: html,
+      markdown: markdown,
       description: description,
       tags: tags,
       imageArr: imageArr,

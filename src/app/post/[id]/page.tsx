@@ -18,8 +18,8 @@ const Page = async (props: iProps) => {
   return (
     <div className="relative w-full h-auto flex desktop:left-[150px] mobile-left-auto">
       <Suspense fallback={<SkContent data={data} />}>
-        <Content data={data} />
-        <Toc htmlString={data[0]?.content} />
+        <Content data={data} querystring={props.params.id} />
+        <Toc htmlString={data[0]?.html} />
       </Suspense>
     </div>
   );

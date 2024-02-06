@@ -13,6 +13,7 @@ import { PreviewStyle } from "@toast-ui/react-editor";
 import Prism from "prismjs";
 import "prismjs/components/prism-clojure.js";
 import axios from "axios";
+import { SSRfetch } from "@/api/fetch";
 
 const MyEditor = ({ id }: { id?: number }) => {
   const editorRef = useRef(null);
@@ -23,6 +24,7 @@ const MyEditor = ({ id }: { id?: number }) => {
   const [preview, setPreview] = useState<PreviewStyle>(
     window.innerWidth > 1000 ? "vertical" : "tab"
   );
+  const [data, setData] = useState<any>([]);
 
   const toolbarItems = [
     ["heading", "bold", "italic", "strike"],
@@ -42,10 +44,11 @@ const MyEditor = ({ id }: { id?: number }) => {
   const writePost = async () => {
     const editorIns = editorRef.current.getInstance();
     const contentHtml = editorIns.getHTML();
-    // const contentMarkdown = editorIns.getMarkdown();
+    const contentMarkdown = editorIns.getMarkdown();
     await setPost(
       titleRef?.current?.value,
       contentHtml,
+      contentMarkdown,
       desRef?.current?.value,
       tagsRef?.current?.value,
       imageArr?.current
@@ -56,9 +59,14 @@ const MyEditor = ({ id }: { id?: number }) => {
     setPreview(window.innerWidth > 1000 ? "vertical" : "tab");
   };
 
+  const fetchAPI = async () => {
+    const response = await SSRfetch(`/post?id=${id as number}`);
+    setData(await response.json());
+  };
+
   useEffect(() => {
     window.addEventListener("resize", handleResize);
-
+    fetchAPI();
     return () => {
       window.removeEventListener("resize", handleResize);
     };
@@ -111,7 +119,67 @@ const MyEditor = ({ id }: { id?: number }) => {
     };
   }, [editorRef]);
 
-  return id !== null ? (
+  console.log(id);
+
+  return id !== undefined ? (
+    <div className="p-5">
+      <div>
+        <input
+          type="file"
+          className="border border-gray-300 outline-none py-3 px-3 mb-2 rounded"
+          placeholder="thumbnail"
+          multiple
+        />
+      </div>
+      <div>
+        <input
+          type="text"
+          placeholder="Enter the Title"
+          ref={titleRef}
+          value={data[0]?.title}
+          className="border border-gray-300 outline-none w-full py-3 px-3 mb-2 rounded"
+        />
+        <input
+          type="text"
+          placeholder="Enter the Desc"
+          ref={desRef}
+          value={data[0]?.description}
+          className="border border-gray-300 outline-none w-full py-3 px-3 mb-2 rounded"
+        />
+        <input
+          type="text"
+          placeholder="Enter the Tags Split ','"
+          ref={tagsRef}
+          value={data[0]?.tags}
+          className="border border-gray-300 outline-none w-full py-3 px-3 mb-2 rounded"
+        />
+      </div>
+      {editorRef && data[0]?.markdown && (
+        <Editor
+          ref={editorRef}
+          initialValue={data[0]?.markdown}
+          initialEditType="markdown"
+          previewStyle={preview} // tab || vertical
+          hideModeSwitch={true}
+          height="calc(100vh - 380px)"
+          theme={""} // '' & 'dark'
+          usageStatistics={false}
+          useCommandShortcut={false}
+          useDefaultHTMLSanitizer={false}
+          toolbarItems={toolbarItems}
+          plugins={[colorSyntax, [codeSyntaxHighlight, { highlighter: Prism }]]}
+        />
+      )}
+      <div className="text-right">
+        <button
+          className="border border-gray-100 cursor-pointer py-5 px-10 rounded bg-primary-1 text-blue-50 mt-3"
+          onClick={writePost}
+        >
+          Update
+        </button>
+      </div>
+    </div>
+  ) : (
     <div className="p-5">
       <div>
         <input
@@ -166,7 +234,7 @@ const MyEditor = ({ id }: { id?: number }) => {
         </button>
       </div>
     </div>
-  ) : null;
+  );
 };
 
 export default MyEditor;

@@ -41,7 +41,7 @@ const Content = async ({
       </div>
       <div className="text-sm sm:text-md text-gray-500 flex items-center justify-between">
         <Link
-          href={`/post/update/${querystring}`}
+          href={`/blog/post/update/${querystring}`}
           className="bg-blue-500 text-white py-1 px-2 rounded text-[13px]"
           type="button"
         >

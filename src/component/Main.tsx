@@ -38,7 +38,7 @@ const Main = async () => {
               </span>
             ))}
             <span className="font-bold px-2 border inline-block border-[#ccc] py-1 px-4 rounded-2xl mx-2 text-[13px] cursor-pointer">
-              <Link href="/editor">Posting</Link>
+              <Link href="/blog/editor">Posting</Link>
             </span>
           </li>
         </ol>
@@ -46,7 +46,7 @@ const Main = async () => {
       {/* Post Item Start */}
       {jsonData?.map((item: iPost) => (
         <Link
-          href={`/post/${item.pk}`} //shadow-[0_2px_4px_0_#ccd0d9]
+          href={`/blog/post/${item.pk}`} //shadow-[0_2px_4px_0_#ccd0d9]
           className="feed-wrapper basic-font-color flex"
           key={item.pk}
         >

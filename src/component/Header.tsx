@@ -2,6 +2,7 @@
 import React, { useEffect, useLayoutEffect, useState } from "react";
 import classNames from "classnames";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const Header = () => {
   const [menuToggle, setMenuToggle] = useState<boolean>(false);
@@ -34,8 +35,8 @@ const Header = () => {
           {/* 메뉴 */}
           <div onClick={() => router.push("/")} className="flex space-x-4">
             <div>
-              <a
-                href="#"
+              <Link
+                href="/"
                 className="flex items-center py-5 text-gray-700 dark:text-white"
               >
                 <svg
@@ -53,25 +54,25 @@ const Header = () => {
                 <span className="text-logo italic text-lightColor font-bold dark:text-darkColor text-[1.75rem] ease duration-300 transition-all">
                   SEUNGCHAN
                 </span>
-              </a>
+              </Link>
             </div>
           </div>
 
           {/* 메뉴2 */}
           <div className="hidden md:flex items-center space-x-1">
             <div className="hidden md:flex items-center space-x-1">
-              <a
-                href="#"
-                className="py-5 px-3 text-gray-700 dark:text-white hover:text-gray-900"
+              <Link
+                href="/"
+                className="py-5 px-3 text-gray-700 dark:text-white hover:text-gray-900 font-[600]"
               >
                 About
-              </a>
-              <a
-                href="#"
-                className="py-5 px-3 text-gray-700 dark:text-white hover:text-gray-900"
+              </Link>
+              <Link
+                href="/blog"
+                className="py-5 px-3 text-gray-700 dark:text-white hover:text-gray-900 font-[600]"
               >
                 Blog
-              </a>
+              </Link>
               {/* <a
                 href="#"
                 className="py-5 px-3 text-gray-700 dark:text-white hover:text-gray-900"

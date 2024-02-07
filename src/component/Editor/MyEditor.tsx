@@ -20,7 +20,7 @@ const MyEditor = ({ id }: { id?: number }) => {
   const titleRef = useRef(null);
   const desRef = useRef(null);
   const tagsRef = useRef(null);
-  let imageArr = useRef<string[]>([]);
+  let imageArr = useRef<{ url: string; isThumbnail: string }[]>([]);
   const [preview, setPreview] = useState<PreviewStyle>(
     window.innerWidth > 1000 ? "vertical" : "tab"
   );
@@ -51,7 +51,7 @@ const MyEditor = ({ id }: { id?: number }) => {
       contentMarkdown,
       desRef?.current?.value,
       tagsRef?.current?.value.trim(),
-      imageArr?.current
+      JSON.stringify(imageArr?.current)
     );
   };
 
@@ -66,7 +66,7 @@ const MyEditor = ({ id }: { id?: number }) => {
 
   useEffect(() => {
     window.addEventListener("resize", handleResize);
-    fetchAPI();
+    if (id !== undefined) fetchAPI();
     return () => {
       window.removeEventListener("resize", handleResize);
     };
@@ -88,8 +88,8 @@ const MyEditor = ({ id }: { id?: number }) => {
         for (const filename of filenames) {
           const imageUrl = `${process.env.NEXT_PUBLIC_IMAGE_PREVIEW_URL}/${filename}`;
           callback(imageUrl, "image");
+          imageArr.current.push({ url: filename, isThumbnail: "0" });
         }
-        imageArr.current = filenames;
       } catch (error) {
         console.error("Error uploading image:", error);
       }
@@ -103,11 +103,16 @@ const MyEditor = ({ id }: { id?: number }) => {
     }
 
     return () => {
-      /* 만약 이미지 배열이 존재한다면(임시 이미지), 페이지를 떠날 때, API 이미지 삭제 요청을 보냄 */
       if (imageArr.current.length > 0) {
+        const urls = imageArr.current.map((image) => image.url);
+
+        const queryParams = urls
+          .map((url) => `filenames=${encodeURIComponent(url)}`)
+          .join("&");
+
         axios
           .delete(
-            `${process.env.NEXT_PUBLIC_SERVER_URL}/post/delImage?filenames=${imageArr.current}`
+            `${process.env.NEXT_PUBLIC_SERVER_URL}/post/delImage?${queryParams}`
           )
           .then(() => {
             console.log("DELETE request successful");
@@ -119,7 +124,34 @@ const MyEditor = ({ id }: { id?: number }) => {
     };
   }, [editorRef]);
 
-  console.log(id);
+  /* 에디터 가장 상단에 Thumbnail 이미지 별개로 업로드 */
+  const thumbUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    const files = event.target.files;
+    for (const file of files) {
+      const formData = new FormData();
+      const fileExtension = file.name.split(".").pop();
+      const imageNameWithExtension = `.${fileExtension}`;
+      const blob = file.slice(0, file.size, file.type);
+      formData.append("img", blob, imageNameWithExtension);
+      try {
+        const { data: filenames } = await axios.post<string[]>(
+          `${process.env.NEXT_PUBLIC_SERVER_URL}/post/addImage`,
+          formData,
+          { headers: { "content-type": "multipart/form-data" } }
+        );
+        const imageUrl = `${process.env.NEXT_PUBLIC_IMAGE_PREVIEW_URL}/${filenames[0]}`;
+        if (editorRef.current) {
+          const editorInstance = editorRef.current.getInstance();
+          const currentMarkdown = editorInstance.getMarkdown();
+          const markdownWithImage = `![Image Alt Text](${imageUrl})\n${currentMarkdown}`;
+          editorInstance.setMarkdown(markdownWithImage);
+          imageArr.current.push({ url: filenames[0], isThumbnail: "1" });
+        }
+      } catch (error) {
+        console.error("Error uploading image:", error);
+      }
+    }
+  };
 
   return id !== undefined ? (
     <div className="p-5">
@@ -129,6 +161,7 @@ const MyEditor = ({ id }: { id?: number }) => {
           className="border border-gray-300 outline-none py-3 px-3 mb-2 rounded"
           placeholder="thumbnail"
           multiple
+          onChange={thumbUpload}
         />
       </div>
       <div>
@@ -187,6 +220,7 @@ const MyEditor = ({ id }: { id?: number }) => {
           className="border border-gray-300 outline-none py-3 px-3 mb-2 rounded"
           placeholder="thumbnail"
           multiple
+          onChange={thumbUpload}
         />
       </div>
       <div>

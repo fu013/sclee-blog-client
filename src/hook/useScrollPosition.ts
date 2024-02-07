@@ -18,7 +18,7 @@ export default function useScrollPosition() {
   }, []);
 
   const scrollToEl = (index: number) => {
-    const headingElements = document.querySelectorAll("h1, h2, h3");
+    const headingElements = document.querySelectorAll("h1, h2, h3, h4, h5");
 
     if (index >= 0 && index < headingElements.length) {
       const targetElement = headingElements[index];

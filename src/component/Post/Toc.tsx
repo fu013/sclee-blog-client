@@ -22,7 +22,7 @@ const Toc = ({ htmlString }: TocProps) => {
 
     if (typeof window !== "undefined" && htmlString.trim() !== "") {
       const doc = parser.parseFromString(htmlString, "text/html");
-      const headings = doc.querySelectorAll("h1, h2, h3");
+      const headings = doc.querySelectorAll("h1, h2, h3, h4, h5");
       let id = 0;
       const updatedTocList: Toc[] = [];
 

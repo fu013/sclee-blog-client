@@ -18,7 +18,7 @@ const Content = async ({
     if (data[0]?.html) {
       const dom = new JSDOM(data[0]?.html);
       const document = dom.window.document;
-      const headings = document.querySelectorAll("h1, h2, h3");
+      const headings = document.querySelectorAll("h1, h2, h3, h4, h5");
       let id = 0;
 
       headings.forEach((heading: any) => {

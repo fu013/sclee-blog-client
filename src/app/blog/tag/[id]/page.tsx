@@ -6,17 +6,26 @@ import { Suspense } from "react";
 import { SSRfetch } from "@/api/fetch";
 import { iPost } from "@/interface";
 
-const Page = async () => {
-  const response = await SSRfetch("/post/all");
-  const jsonData: iPost[] = await response.json();
+interface iProps {
+  params: {
+    id: string;
+  };
+}
+
+const Page = async (props: iProps) => {
+  const res = await SSRfetch(`/post/tag?id=${props.params.id as string}`);
+  const jsonDataByTag: iPost[] = await res.json();
+
+  const resAll = await SSRfetch("/post/all");
+  const jsonDataAll: iPost[] = await resAll.json();
 
   return (
     <section>
       <Suspense fallback={<SkMain />}>
-        <Main jsonData={jsonData} />
+        <Main jsonData={jsonDataByTag} />
       </Suspense>
       <Suspense fallback={<Skaside />}>
-        <Aside jsonData={jsonData} />
+        <Aside jsonData={jsonDataAll} />
       </Suspense>
     </section>
   );

@@ -18,3 +18,9 @@ Stack
 frontend: typescript, nextjs, tailwind
 backend: java, spring, jpa
 deploy: docker, jenkins, Home-server
+
+태그 조회 SQL(테이블을 따로 태그로 파서 관리할까 생각했는데, 조인도 필요하고, 쿼리로 사용해서 하는게 특별히 중복검사를 못하는 상황도 안나와서, 단순한 테이블 구조로 가져가되, 쿼리를 복잡하게 쓰는편이 효율이 좋다고 생각했음)
+
+<!-- SELECT *
+FROM post
+WHERE FIND_IN_SET('ci-cd', REPLACE(tags, ', ', ',')) > 0; -->

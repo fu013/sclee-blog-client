@@ -1,5 +1,6 @@
 "use client";
 import { iPost } from "@/interface";
+import Link from "next/link";
 import React from "react";
 
 const Aside = ({ jsonData }: { jsonData: iPost[] }) => {
@@ -23,20 +24,26 @@ const Aside = ({ jsonData }: { jsonData: iPost[] }) => {
         Memories may fade, <br />
         but records last forever.
       </h5>
+      <Link href={`/blog/editor`} className="block ct-li font-bold mt-6">
+        글쓰기
+      </Link>
       <div className="mt-10">
         <h5 className="text-[#2bc1bc] font-bold text-[1.25rem]">
           <img
             className="w-[24px] ease-in-out duration-300 transition-all inline-block mr-2"
             src="/category.png"
           />
-          All Tags({totalTags.size})
+          태그 목록
         </h5>
         <ul className="text-gray-700 basic-font-color">
+          <Link href={`/blog`} className="block ct-li font-bold mt-6">
+            전체 보기({totalTags.size})
+          </Link>
           {Array.from(totalTags.entries()).map(([tag, count]) => (
-            <li key={tag} className="ct-li">
+            <Link href={`/blog/tag/${tag}`} key={tag} className="block ct-li">
               {tag}
               {count > 1 ? `(${count})` : null}
-            </li>
+            </Link>
           ))}
         </ul>
       </div>

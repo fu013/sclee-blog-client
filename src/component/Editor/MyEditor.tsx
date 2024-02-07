@@ -50,7 +50,7 @@ const MyEditor = ({ id }: { id?: number }) => {
       contentHtml,
       contentMarkdown,
       desRef?.current?.value,
-      tagsRef?.current?.value,
+      tagsRef?.current?.value.trim(),
       imageArr?.current
     );
   };

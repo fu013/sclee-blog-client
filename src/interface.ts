@@ -8,6 +8,7 @@ export interface iPost {
   description: string;
   tags: string;
   comment: null | any;
+  path: string | null;
   updatedDate: string;
   createdDate: string;
 }

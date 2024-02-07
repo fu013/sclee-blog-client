@@ -6,7 +6,7 @@ const setPost = async (
   markdown: string,
   description: string,
   tags: string,
-  imageArr: string[]
+  imageArr: any
 ) => {
   try {
     await myAxios.post("/post/set", {
@@ -18,11 +18,11 @@ const setPost = async (
       imageArr: imageArr,
     });
     alert("포스트가 성공적으로 저장되었습니다.");
-    location.href = "/";
+    location.href = "/blog";
   } catch (err) {
     console.error(err);
     alert("포스트 저장 중 오류가 발생했습니다.");
-    location.href = "/";
+    location.href = "/blog";
   }
 };
 

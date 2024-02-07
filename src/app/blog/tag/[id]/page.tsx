@@ -19,6 +19,8 @@ const Page = async (props: iProps) => {
   const resAll = await SSRfetch("/post/all");
   const jsonDataAll: iPost[] = await resAll.json();
 
+  console.log(jsonDataAll[0]);
+
   return (
     <section>
       <Suspense fallback={<SkMain />}>

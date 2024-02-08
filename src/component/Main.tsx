@@ -2,6 +2,7 @@ import { iPost } from "@/interface";
 import Link from "next/link";
 import TagTransformer from "./Common/TagTransformer";
 import moment from "moment";
+import extractSubstringAfterUploads from "@/lib/extractSubstringAfterUploads";
 
 const Main = async ({ jsonData }: { jsonData: iPost[] }) => {
   return (
@@ -15,7 +16,11 @@ const Main = async ({ jsonData }: { jsonData: iPost[] }) => {
         >
           <img
             className="w-[12.5rem] h-[12.5rem] mr-10 border border-[#ccc] dark:border-[#454c53] rounded-xl"
-            src="https://static.toss.im/assets/payments/contents/writer-2-thumb.jpg"
+            src={
+              process.env.NEXT_PUBLIC_IMAGE_PREVIEW_URL +
+              "/" +
+              extractSubstringAfterUploads(item?.path)
+            }
             alt="thumbnail"
           />
           <span className="feed btn-6 ">

@@ -8,11 +8,12 @@ import { iPost } from "@/interface";
 
 const Page = async () => {
   const response = await SSRfetch("/post/all");
+  let jsonData: iPost[];
   if (!response.ok) {
     console.error("Server returned an error:", response.status);
-    return;
+  } else {
+    jsonData = await response.json();
   }
-  const jsonData: iPost[] = await response.json();
 
   return (
     <section>

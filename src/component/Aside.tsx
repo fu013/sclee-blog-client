@@ -5,7 +5,7 @@ import React from "react";
 
 const Aside = ({ jsonData }: { jsonData: iPost[] }) => {
   // 배열을 순차적으로 순회하며 맵을 만듬, 중복값이 있는지 찾고, 없으면 Key로 추가, 이미 있으면 key value를 + 1함, 최종적으로 중복 제거된 맵을 반환
-  const totalTags = jsonData.reduce(
+  const totalTags = jsonData?.reduce(
     (accumulator: Map<string, number>, currentItem: any) => {
       const tagsArray = currentItem.tags?.split(",");
       tagsArray?.forEach((tag: string) => {
@@ -37,14 +37,15 @@ const Aside = ({ jsonData }: { jsonData: iPost[] }) => {
         </h5>
         <ul className="text-gray-700 basic-font-color">
           <Link href={`/blog`} className="block ct-li font-bold mt-6">
-            전체 보기({totalTags.size})
+            전체 보기({totalTags?.size})
           </Link>
-          {Array.from(totalTags.entries()).map(([tag, count]) => (
-            <Link href={`/blog/tag/${tag}`} key={tag} className="block ct-li">
-              {tag}
-              {count > 1 ? `(${count})` : null}
-            </Link>
-          ))}
+          {totalTags &&
+            Array.from(totalTags?.entries()).map(([tag, count]) => (
+              <Link href={`/blog/tag/${tag}`} key={tag} className="block ct-li">
+                {tag}
+                {count > 1 ? `(${count})` : null}
+              </Link>
+            ))}
         </ul>
       </div>
     </aside>

@@ -7,7 +7,7 @@ import { Inter } from "next/font/google";
 import Footer from "@/component/Footer";
 import { Suspense } from "react";
 import SkHeader from "@/skeletion/SkHeader";
-import Providers from "./provider";
+import Providers from "./Provider";
 
 const inter = Inter({ subsets: ["latin"] });
 

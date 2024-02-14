@@ -1,4 +1,8 @@
-const RootPage = () => {
+// export const fetchCache = "force-no-store";
+// export const revalidate = 0; // seconds
+export const dynamic = "force-dynamic";
+
+const Page = () => {
   return (
     <section className="!justify-center">
       <div>
@@ -20,4 +24,4 @@ const RootPage = () => {
   );
 };
 
-export default RootPage;
+export default Page;

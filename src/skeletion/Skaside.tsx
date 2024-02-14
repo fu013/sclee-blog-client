@@ -2,7 +2,7 @@
 import React from "react";
 import Skeleton from "./Skeletion";
 
-const Skaside = () => {
+const SkAside = () => {
   return (
     <aside>
       <Skeleton className="card rounded-full" />
@@ -20,4 +20,4 @@ const Skaside = () => {
   );
 };
 
-export default Skaside;
+export default SkAside;

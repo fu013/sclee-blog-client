@@ -9,4 +9,4 @@ RUN yarn install
 
 EXPOSE 2416
 
-CMD ["npm", "run", "dev"]
+CMD ["yarn", "run", "dev"]

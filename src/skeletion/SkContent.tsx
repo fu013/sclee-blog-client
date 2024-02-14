@@ -11,14 +11,14 @@ const SkContent = async ({ data }: { data: iPost[] }) => {
   return (
     <div className="max-w-[900px] w-full p-[1.6rem] mx-auto h-fit relative rounded-lg overflow-hidden">
       <div className="mb-4 text-s sm:text-md text-gray-500">
-        <Skeleton className="w-50 " />
+        <Skeleton className="w-50" />
       </div>
       <div className="font-[900] text-[2rem] basic-font-color">
-        <Skeleton className="w-50 " />
+        <Skeleton className="w-50" />
       </div>
       <div className="text-sm sm:text-md text-gray-500 flex items-center justify-between">
         <Skeleton className="bg-blue-500 text-white py-1 px-2 rounded text-[13px]" />
-        <Skeleton className="w-50 " />
+        <Skeleton className="w-50" />
       </div>
       <hr className="mt-4 mb-16" />
       <article

@@ -1,4 +1,4 @@
-import Skaside from "@/skeletion/SkAside";
+import SkAside from "@/skeletion/SkAside";
 import SkMain from "@/skeletion/SkMain";
 import Aside from "@/component/Aside";
 import Main from "@/component/Main";
@@ -20,7 +20,7 @@ const Page = async () => {
       <Suspense fallback={<SkMain />}>
         <Main jsonData={jsonData} />
       </Suspense>
-      <Suspense fallback={<Skaside />}>
+      <Suspense fallback={<SkAside />}>
         <Aside jsonData={jsonData} />
       </Suspense>
     </section>

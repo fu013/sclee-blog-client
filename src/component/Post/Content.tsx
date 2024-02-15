@@ -5,6 +5,8 @@ import React from "react";
 import Review from "./Review";
 import Link from "next/link";
 import { JSDOM } from "jsdom";
+import dynamic from "next/dynamic";
+import DeleteButton from "./DeleteButton";
 
 const Content = async ({
   data,
@@ -40,13 +42,16 @@ const Content = async ({
         {data[0]?.title}
       </div>
       <div className="text-sm sm:text-md text-gray-500 flex items-center justify-between">
-        <Link
-          href={`/blog/post/update/${querystring}`}
-          className="bg-blue-500 text-white py-1 px-2 rounded text-[13px]"
-          type="button"
-        >
-          수정하기
-        </Link>
+        <div>
+          <Link
+            href={`/blog/post/update/${querystring}`}
+            className="bg-blue-500 text-white py-1 px-2 rounded text-[13px]"
+            type="button"
+          >
+            수정하기
+          </Link>
+          <DeleteButton querystring={querystring} />
+        </div>
         <span>{moment(data[0]?.createdDate).format("YYYY-MM-DD")}</span>
       </div>
       <hr className="mt-4 mb-16" />

@@ -25,5 +25,16 @@ const setPost = async (
     location.href = "/blog";
   }
 };
+const deletePost = async (pk: number) => {
+  try {
+    await myAxios.delete(`/post/delete/${pk}`);
+    alert("포스트가 성공적으로 삭제되었습니다.");
+    location.href = "/blog";
+  } catch (err) {
+    console.error(err);
+    alert("포스트 삭제 중 오류가 발생했습니다.");
+    location.href = "/blog";
+  }
+};
 
-export { setPost };
+export { setPost, deletePost };

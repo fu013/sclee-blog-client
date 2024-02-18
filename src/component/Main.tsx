@@ -11,11 +11,11 @@ const Main = async ({ jsonData }: { jsonData: iPost[] }) => {
       {jsonData?.map((item: iPost) => (
         <Link
           href={`/blog/post/${item.pk}`} //shadow-[0_2px_4px_0_#ccd0d9]
-          className="feed-wrapper basic-font-color flex"
+          className="feed-wrapper basic-font-color flex relative"
           key={item.pk}
         >
           <img
-            className="w-[12.5rem] h-[12.5rem] mr-10 border border-[#ccc] dark:border-[#454c53] rounded-xl"
+            className="w-[6.5rem] h-[6.5rem] mr-10"
             src={
               process.env.NEXT_PUBLIC_IMAGE_PREVIEW_URL +
               "/" +
@@ -23,15 +23,17 @@ const Main = async ({ jsonData }: { jsonData: iPost[] }) => {
             }
             alt="thumbnail"
           />
-          <span className="feed btn-6 ">
+          <span className="feed btn-6 w-full">
             <div className="feed-info">
-              <div className="border-[3px] font-bold py-2 px-2 text-[0.75rem] border-indigo-900 rounded-full">
-                {moment(item?.createdDate).format("YYYY/MM/DD")}
-              </div>
               <div>{TagTransformer(item.tags)}</div>
             </div>
             <h5 className="feed-title">{item.title}</h5>
-            <p className="feed-des basic-font-color">{item.description}</p>
+            <div className="flex justify-between w-full items-center">
+              <p className="feed-des basic-font-color">{item.description}</p>
+              <div className="border-[3px] right-4 bottom-4 font-bold py-2 px-2 text-[0.75rem] border-indigo-900 rounded-full">
+                {moment(item?.createdDate).format("YYYY/MM/DD")}
+              </div>
+            </div>
           </span>
         </Link>
       ))}

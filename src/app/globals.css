@@ -111,7 +111,7 @@
     @apply font-bold;
   } */
   .feed-wrapper {
-    @apply border-b-[#eee] dark:border-b-[#454c53] border-b-[1px] rounded-[4px] block pb-[2.5rem] m-[1.25rem] mb-[2.5rem];
+    @apply border-b-[#aaa] dark:border-[#454c53] border-[1px] rounded-[4px] block p-[1rem] m-[1.25rem] mb-[2.5rem];
   }
   .tags {
     @apply flex my-6;
@@ -120,13 +120,13 @@
     @apply rounded-xl border-2 border-slate-500 mx-2 px-4;
   }
   .feed-title {
-    @apply font-bold text-[2rem] font-[#000000] text-balance mb-[1rem];
+    @apply font-bold text-[2rem] font-[#000000] text-balance mb-[0.25rem];
   }
   .feed-des {
     @apply font-[#000] text-[1rem];
   }
   .feed-info {
-    @apply flex justify-start mb-[1rem] items-center;
+    @apply flex justify-start mb-[0.25rem] items-center;
   }
   .feed-info > div {
     @apply mx-3;

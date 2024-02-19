@@ -80,9 +80,9 @@ const Aside = ({ jsonData }: { jsonData: iPost[] }) => {
           Tag list
         </h5>
         <ul className="text-gray-700 basic-font-color">
-          <Link href={`/blog`} className="block ct-li font-bold mt-6">
+          {/* <Link href={`/blog`} className="block ct-li font-bold mt-6">
             All({totalTags?.size})
-          </Link>
+          </Link> */}
           {totalTags &&
             Array.from(totalTags?.entries()).map(([tag, count]) => (
               <Link href={`/blog/tag/${tag}`} key={tag} className="block ct-li">

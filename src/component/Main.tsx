@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { iPost } from "@/interface";
 import Link from "next/link";
 import TagTransformer from "./Common/TagTransformer";
@@ -7,6 +8,22 @@ import extractSubstringAfterUploads from "@/lib/extractSubstringAfterUploads";
 const Main = async ({ jsonData }: { jsonData: iPost[] }) => {
   return (
     <main>
+      <div className="flex items-end justify-between">
+        <div className="relative w-fit pr-2">
+          <input
+            type="text"
+            placeholder="Type a keyword"
+            className="py-2 px-4 border border-gray-300 rounded-[4px] pr-12 outline-none w-[200px] focus:border-blue-500 focus:w-[300px] transition-all duration-300 ease-out placeholder-gray-400"
+          />
+          <img
+            className="absolute top-[-2px] right-0 mt-3 mr-4 w-6 text-gray-600 cursor-pointer opacity-80"
+            src="/magnifying-glass.png"
+          />
+        </div>
+        <div className="pr-5 text-[20px] font-bold">
+          <span>All(1)</span>
+        </div>
+      </div>
       {/* Post Item Start */}
       {jsonData?.map((item: iPost) => (
         <Link

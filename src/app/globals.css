@@ -111,7 +111,7 @@
     @apply font-bold;
   } */
   .feed-wrapper {
-    @apply ease-in-out duration-300 transition-all border-[#aaa] dark:border-[#454c53] border-[1px] rounded-[4px] block p-[1rem] m-[1.25rem] mb-[2.5rem];
+    @apply ease-in-out duration-300 transition-all border-[#aaa] dark:border-[#454c53] border-[1px] rounded-[4px] block p-[1rem] m-[1.25rem] ml-0 mb-[2.5rem];
   }
   .tags {
     @apply flex my-6;

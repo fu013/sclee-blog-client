@@ -16,7 +16,7 @@ const Page = async (props: iProps) => {
   const data: iPost[] = await response.json();
 
   return (
-    <div className="relative w-full h-auto flex desktop:left-[150px] mobile-left-auto">
+    <div className="relative w-full h-auto flex desktop:left-[100px] mobile-left-auto">
       <Suspense fallback={<SkContent data={data} />}>
         <Content data={data} querystring={props.params.id} />
         <Toc htmlString={data[0]?.html} />

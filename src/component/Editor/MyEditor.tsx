@@ -133,19 +133,29 @@ const MyEditor = ({ id }: { id?: number }) => {
       const imageNameWithExtension = `.${fileExtension}`;
       const blob = file.slice(0, file.size, file.type);
       formData.append("img", blob, imageNameWithExtension);
+
       try {
         const { data: filenames } = await axios.post<string[]>(
           `${process.env.NEXT_PUBLIC_SERVER_URL}/post/addImage`,
           formData,
           { headers: { "content-type": "multipart/form-data" } }
         );
+
         const imageUrl = `${process.env.NEXT_PUBLIC_IMAGE_PREVIEW_URL}/${filenames[0]}`;
+        const isThumbnail = "1";
+        const existingThumbnailIndex = imageArr.current.findIndex(
+          (img) => img.isThumbnail === isThumbnail
+        );
+        const editorInstance = editorRef.current.getInstance();
+        const currentMarkdown = editorInstance.getMarkdown();
+        const markdownWithImage = `![Image Alt Text](${imageUrl})\n${currentMarkdown}`;
         if (editorRef.current) {
-          const editorInstance = editorRef.current.getInstance();
-          const currentMarkdown = editorInstance.getMarkdown();
-          const markdownWithImage = `![Image Alt Text](${imageUrl})\n${currentMarkdown}`;
           editorInstance.setMarkdown(markdownWithImage);
-          imageArr.current.push({ url: filenames[0], isThumbnail: "1" });
+        }
+        if (existingThumbnailIndex !== -1) {
+          imageArr.current[existingThumbnailIndex].url = filenames[0];
+        } else {
+          imageArr.current.push({ url: filenames[0], isThumbnail });
         }
       } catch (error) {
         console.error("Error uploading image:", error);

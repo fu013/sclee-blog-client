@@ -14,6 +14,9 @@ import Prism from "prismjs";
 import "prismjs/components/prism-clojure.js";
 import axios from "axios";
 import { SSRfetch } from "@/api/fetch";
+import { v4 as uuidv4 } from "uuid";
+
+const newUUID: string = uuidv4();
 
 const MyEditor = ({ id }: { id?: number }) => {
   const editorRef = useRef(null);

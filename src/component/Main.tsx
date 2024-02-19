@@ -11,7 +11,7 @@ const Main = async ({ jsonData }: { jsonData: iPost[] }) => {
       {jsonData?.map((item: iPost) => (
         <Link
           href={`/blog/post/${item.pk}`} //shadow-[0_2px_4px_0_#ccd0d9]
-          className="feed-wrapper basic-font-color flex relative"
+          className="feed-wrapper basic-font-color flex relative hover:border-t hover:border-r hover:border-b hover:border-l hover:border-solid hover:border-gray-800 hover:transform hover:translate-x-3"
           key={item.pk}
         >
           <img

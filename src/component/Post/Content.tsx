@@ -2,11 +2,11 @@ import TagTransformer from "@/component/Common/TagTransformer";
 import { iPost } from "@/interface";
 import moment from "moment";
 import React from "react";
-import Review from "./Review";
 import Link from "next/link";
 import { JSDOM } from "jsdom";
-import dynamic from "next/dynamic";
 import DeleteButton from "./DeleteButton";
+import Comments from "../Comment/Comments";
+import PostComment from "../Comment/Comments";
 
 const Content = async ({
   data,
@@ -59,7 +59,10 @@ const Content = async ({
         className="prose prose-sm sm:prose-base dark:prose-invert max-w-none pb-20 mb-20 border-b border-gray-300"
         dangerouslySetInnerHTML={{ __html: modifiedHtmlString! }}
       />
-      <Review />
+      <div>
+        <h1>== Review ==</h1>
+        <PostComment />
+      </div>
     </div>
   );
 };

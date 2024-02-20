@@ -1,10 +1,5 @@
-import TagTransformer from "@/component/Common/TagTransformer";
 import { iPost } from "@/interface";
-import moment from "moment";
-import React, { useEffect, useState } from "react";
-import Link from "next/link";
-import { JSDOM } from "jsdom";
-import Review from "@/component/Post/Review";
+import React from "react";
 import Skeleton from "./Skeletion";
 
 const SkContent = async ({ data }: { data: iPost[] }) => {

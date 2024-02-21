@@ -14,7 +14,7 @@ const Header = () => {
 
   return (
     <nav>
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-full mx-auto px-10">
         <div className="flex justify-between items-center">
           {/* 메뉴 */}
           <div onClick={() => router.push("/")} className="flex space-x-4">

@@ -1,22 +1,38 @@
 "use client";
+import { SSRfetch } from "@/api/fetch";
 import { iPost } from "@/interface";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-const Aside = ({ jsonData }: { jsonData: iPost[] }) => {
-  // 배열을 순차적으로 순회하며 맵을 만듬, 중복값이 있는지 찾고, 없으면 Key로 추가, 이미 있으면 key value를 + 1함, 최종적으로 중복 제거된 맵을 반환
-  const totalTags = jsonData?.reduce(
-    (accumulator: Map<string, number>, currentItem: any) => {
-      const tagsArray = currentItem.tags?.split(",");
-      tagsArray?.forEach((tag: string) => {
-        const trimmedTag = tag.trim();
-        const currentValue = accumulator.get(trimmedTag) || 0;
-        accumulator.set(trimmedTag, currentValue + 1);
-      });
-      return accumulator;
-    },
-    new Map<string, number>()
-  );
+const Aside = () => {
+  const [totalTags, setTotalTags] = useState<Map<string, number>>(new Map());
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const resAll = await SSRfetch("/post/all");
+        const jsonData: iPost[] = await resAll.json();
+
+        const newTotalTags = jsonData?.reduce(
+          (accumulator: Map<string, number>, currentItem: any) => {
+            const tagsArray = currentItem.tags?.split(",");
+            tagsArray?.forEach((tag: string) => {
+              const trimmedTag = tag.trim();
+              const currentValue = accumulator.get(trimmedTag) || 0;
+              accumulator.set(trimmedTag, currentValue + 1);
+            });
+            return accumulator;
+          },
+          new Map<string, number>()
+        );
+        setTotalTags(newTotalTags);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+    fetchData();
+  }, []);
+
   return (
     <aside>
       <div className="card bg-[url('/dogProfile.png')] bg-no-repeat bg-center bg-cover" />

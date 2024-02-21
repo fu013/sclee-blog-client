@@ -60,7 +60,6 @@ const Content = async ({
         dangerouslySetInnerHTML={{ __html: modifiedHtmlString! }}
       />
       <div>
-        <h1>== Review ==</h1>
         <PostComment />
       </div>
     </div>

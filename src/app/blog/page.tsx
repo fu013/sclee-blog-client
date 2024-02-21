@@ -1,6 +1,4 @@
-import SkAside from "@/skeletion/SkAside";
 import SkMain from "@/skeletion/SkMain";
-import Aside from "@/component/Aside";
 import Main from "@/component/Main";
 import { Suspense } from "react";
 import { SSRfetch } from "@/api/fetch";
@@ -19,9 +17,6 @@ const Page = async () => {
     <section>
       <Suspense fallback={<SkMain />}>
         <Main jsonData={jsonData} />
-      </Suspense>
-      <Suspense fallback={<SkAside />}>
-        <Aside jsonData={jsonData} />
       </Suspense>
     </section>
   );

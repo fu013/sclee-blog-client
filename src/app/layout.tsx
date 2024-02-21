@@ -8,6 +8,7 @@ import Footer from "@/component/Footer";
 import { Suspense } from "react";
 import SkHeader from "@/skeletion/SkHeader";
 import Providers from "./Provider";
+import Aside from "@/component/Aside";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,6 +25,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
           <Suspense fallback={<SkHeader />}>
             <Header />
           </Suspense>
+          <Aside />
           <>{children}</>
           <Footer />
         </Providers>

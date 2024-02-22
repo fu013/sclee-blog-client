@@ -41,7 +41,13 @@ const Aside = () => {
         but records last forever.
       </h5>
       <div className="justify-start flex">
-        <div className="relative flex flex-row justify-start items-center gap-lg dark:text-white md:mt-xl md:my-xl px-xs mt-5">
+        <div className="relative flex flex-col justify-start items-baseline gap-lg dark:text-white md:mt-xl md:my-xl px-xs mt-5">
+          <Link
+            href={`/blog/editor`}
+            className="relative flex justify-start gap-sm items-start text-body font-normal hoverUnderline mr-5"
+          >
+            Write a New Post
+          </Link>
           <Link
             href="https://github.com/fu013"
             target="_blank"
@@ -84,9 +90,6 @@ const Aside = () => {
           </Link>
         </div>
       </div>
-      <Link href={`/blog/editor`} className="block ct-li font-bold mt-6">
-        Write a New Post
-      </Link>
       <div className="mt-10">
         <h5 className="text-[#2bc1bc] font-bold text-[1.25rem]">
           <img

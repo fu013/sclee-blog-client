@@ -7,21 +7,37 @@ import { useTheme } from "next-themes";
 
 const Header = () => {
   const [menuToggle, setMenuToggle] = useState<boolean>(false);
+  const [scrollPercentage, setScrollPercentage] = useState<number>(0);
   const router = useRouter();
 
   const { systemTheme, theme, setTheme } = useTheme();
   const currentTheme = theme === "system" ? systemTheme : theme;
 
+  const handleScroll = () => {
+    const scrollPosition = window.scrollY;
+    const totalHeight =
+      document.documentElement.scrollHeight - window.innerHeight;
+    const percentage = (scrollPosition / totalHeight) * 100;
+    setScrollPercentage(percentage);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <nav>
-      <div className="max-w-full mx-auto px-10">
-        <div className="flex justify-between items-center">
+      <div className="max-w-full mx-auto px-10 fixed top-0 left-0 w-full h-[55px] px-4 shadow-header overflow-hidden z-50 bg-white">
+        <div className="flex justify-between items-center h-full">
           {/* 메뉴 */}
           <div onClick={() => router.push("/")} className="flex space-x-4">
             <div>
               <Link
                 href="/"
-                className="flex items-center py-5 text-gray-700 dark:text-white"
+                className="flex items-center py-0 text-gray-700 dark:text-white"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -35,7 +51,7 @@ const Header = () => {
                     clipRule="evenodd"
                   />
                 </svg>
-                <span className="text-logo italic text-lightColor font-bold dark:text-darkColor text-[1.75rem] ease duration-300 transition-all">
+                <span className="text-logo italic text-lightColor font-bold dark:text-darkColor text-[1.5rem] ease duration-300 transition-all">
                   SEUNGCHAN
                 </span>
               </Link>
@@ -47,13 +63,13 @@ const Header = () => {
             <div className="hidden md:flex items-center space-x-1">
               <Link
                 href="/"
-                className="py-5 px-3 text-gray-700 dark:text-white hover:text-gray-900 font-[600]"
+                className="py-0 px-3 text-gray-700 dark:text-white hover:text-gray-900 font-[600]"
               >
                 About
               </Link>
               <Link
                 href="/blog"
-                className="py-5 px-3 text-gray-700 dark:text-white hover:text-gray-900 font-[600]"
+                className="py-0 px-3 text-gray-700 dark:text-white hover:text-gray-900 font-[600]"
               >
                 Blog
               </Link>
@@ -120,6 +136,12 @@ const Header = () => {
               )}
             </button>
           </div>
+        </div>
+        <div className="absolute bottom-0 left-0 w-full h-[4px] bg-[#ebebeb] transition-background duration-300 ease z-50">
+          <span
+            className="absolute bottom-0 left-0 h-full bg-gradient-to-r from-red-500 via-purple-500 to-cyan-500  border-[#12c2e9] transition-background duration-300 ease"
+            style={{ width: `${scrollPercentage}%` }}
+          />
         </div>
       </div>
 

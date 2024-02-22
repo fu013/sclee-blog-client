@@ -49,20 +49,21 @@
     @apply ease-in-out duration-300 transition-all /* bg-[#f0f8ff] */ bg-white dark:bg-[#1b1d1f] min-h-[100vh] p-0 m-0;
   }
   nav {
-    @apply ease-in-out duration-300 transition-all w-full /* border-b-[#ececec] border-b-2 dark:border-b-[#454c53] */;
+    @apply ease-in-out duration-300 transition-all w-full /* border-b-[#ececec] border-b-2 dark:border-b-[#454c53] */ z-50;
   }
   section {
-    @apply ease-in-out duration-300 transition-all flex h-auto mt-20 mb-20 mx-auto max-w-[100%] justify-between relative overflow-hidden;
+    @apply ease-in-out duration-300 transition-all flex h-auto mt-20 mb-20 mx-auto max-w-[100%] justify-between relative overflow-hidden z-20;
   }
   aside {
-    @apply ease-in-out duration-300 transition-all h-[100vh] min-w-[20rem] max-w-[30rem] px-10 bg-[aliceblue] fixed top-0 left-0 pt-20;
+    @apply ease-in-out duration-300 transition-all h-[100vh] min-w-[20rem] max-w-[30rem] px-10 bg-[aliceblue] fixed top-0 left-0 pt-20 z-30;
   }
   main {
-    @apply ease-in-out duration-300 transition-all w-full h-auto relative pl-[30rem];
+    @apply ease-in-out duration-300 transition-all w-full h-auto relative pl-[30rem] z-10;
   }
   footer {
-    @apply ease-in-out duration-300 transition-all border-t border-t-[#eee] dark:border-t-[#454c53] h-[3rem] text-[13px] flex justify-end items-center text-gray-600 dark:text-gray-300;
+    @apply ease-in-out duration-300 transition-all border-t border-t-[#eee] dark:border-t-[#454c53] h-[3rem] text-[13px] flex justify-end items-center text-gray-600 dark:text-gray-300 z-40;
   }
+
   input:-webkit-autofill {
     -webkit-box-shadow: 0 0 0 30px #fff inset;
     -webkit-text-fill-color: #000;

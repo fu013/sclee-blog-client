@@ -8,7 +8,7 @@ import extractSubstringAfterUploads from "@/lib/extractSubstringAfterUploads";
 const Main = async ({ jsonData }: { jsonData: iPost[] }) => {
   return (
     <main>
-      <div className="flex items-end justify-between w-[1230px]">
+      <div className="flex items-end justify-between w-[1100px]">
         <div className="relative w-fit pr-2">
           <input
             type="text"

@@ -5,10 +5,10 @@ export const dynamic = "force-dynamic";
 const Page = () => {
   return (
     <section className="!justify-center">
-      <div>
+      <div className="mt-40">
         <div className="w-[300px] h-[300px] rounded-full bg-[url('/dogProfile.png')] bg-no-repeat bg-center bg-cover" />
       </div>
-      <div className="ml-40 prose basic-font">
+      <div className="ml-40 mt-40 prose basic-font">
         <h1 className="prose-heading">About</h1>
         <h5>안녕하세요! </h5>
         <h5>풀스택 개발자 '이승찬' 입니다.</h5>

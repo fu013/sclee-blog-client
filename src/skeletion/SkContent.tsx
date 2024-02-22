@@ -4,7 +4,7 @@ import Skeleton from "./Skeletion";
 
 const SkContent = async ({ data }: { data: iPost[] }) => {
   return (
-    <div className="max-w-[900px] w-full p-[1.6rem] mx-auto h-fit relative rounded-lg overflow-hidden">
+    <div className="max-w-[900px] w-full p-[1.6rem] pl-[6rem] mx-auto h-fit relative rounded-lg overflow-hidden">
       <div className="mb-4 text-s sm:text-md text-gray-500">
         <Skeleton className="w-50" />
       </div>

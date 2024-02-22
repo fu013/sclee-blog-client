@@ -57,7 +57,7 @@ const Toc = ({ htmlString }: TocProps) => {
   }, [scrollPosition, tocList]);
 
   return (
-    <div className="basic-font-color sticky top-28 mt-52 px-5 desktop:block mobile:hidden h-ful max-h-[600px] overflow-y-auto">
+    <div className="basic-font-color sticky top-28 mt-52 px-5 desktop:block mobile:hidden h-ful max-h-[600px] overflow-y-auto mr-52">
       {tocList.map((toc, index) => (
         <div
           key={index}

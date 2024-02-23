@@ -8,8 +8,8 @@ const Page = () => {
       <div className="mt-40">
         <div className="w-[300px] h-[300px] rounded-full bg-[url('/dogProfile.png')] bg-no-repeat bg-center bg-cover" />
       </div>
-      <div className="ml-40 mt-40 prose basic-font">
-        <h1 className="prose-heading">About</h1>
+      <div className="ml-40 mt-40 prose basic-font-color">
+        <h1 className="prose-heading basic-font-color">About</h1>
         <h5>안녕하세요! </h5>
         <h5>풀스택 개발자 '이승찬' 입니다.</h5>
         <br />

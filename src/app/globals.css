@@ -46,16 +46,16 @@
 @layer base {
   body,
   html {
-    @apply ease-in-out duration-300 transition-all /* bg-[#f0f8ff] */ bg-white dark:bg-[#1b1d1f] min-h-[100vh] p-0 m-0;
+    @apply ease-in-out duration-300 transition-all /* bg-[#f0f8ff] */ bg-white dark:bg-gray-900 min-h-[100vh] p-0 m-0;
   }
   nav {
     @apply ease-in-out duration-300 transition-all w-full /* border-b-[#ececec] border-b-2 dark:border-b-[#454c53] */ z-50;
   }
   section {
-    @apply ease-in-out duration-300 transition-all flex h-auto mt-20 mb-20 mx-auto max-w-[100%] justify-between relative overflow-hidden z-20;
+    @apply ease-in-out duration-300 transition-all flex h-auto mt-12 mb-20 mx-auto max-w-[100%] justify-between relative overflow-hidden z-20;
   }
   aside {
-    @apply ease-in-out duration-300 transition-all desktop:h-[100vh] desktop:min-w-[15rem] desktop:max-w-[20rem] mobile:w-full mobile:pb-10 mobile:pt-24 desktop:px-10 mobile:px-5 bg-[aliceblue] top-0 left-0 desktop:pt-20 z-30 desktop:fixed;
+    @apply ease-in-out duration-300 transition-all desktop:h-[100vh] desktop:min-w-[15rem] desktop:max-w-[20rem] mobile:w-full mobile:pb-10 mobile:pt-24 desktop:px-10 mobile:px-5 bg-[aliceblue] dark:bg-gray-800 top-0 left-0 desktop:pt-20 z-30 desktop:fixed;
   }
   main {
     @apply ease-in-out duration-300 transition-all w-full h-auto relative desktop:ml-[320px] desktop:pr-[320px] pl-[0px] pt-[96px] pb-[100px] z-10;

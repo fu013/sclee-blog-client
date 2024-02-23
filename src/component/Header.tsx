@@ -11,7 +11,7 @@ const Header = () => {
   const router = useRouter();
 
   const { systemTheme, theme, setTheme } = useTheme();
-  const currentTheme = theme === "system" ? systemTheme : theme;
+  const currentTheme = theme === "system" ? "dark" : theme;
 
   const handleScroll = () => {
     const scrollPosition = window.scrollY;
@@ -28,9 +28,10 @@ const Header = () => {
     };
   }, []);
 
+  console.log("currentTheme: " + currentTheme);
   return (
     <nav>
-      <div className="max-w-full mx-auto px-16 fixed top-0 left-0 w-full h-[55px] px-4 shadow-header overflow-hidden z-50 bg-white">
+      <div className="max-w-full mx-auto desktop:px-16 mobile:px-4 fixed top-0 left-0 w-full h-[55px] px-4 shadow-header overflow-hidden z-50 bg-white dark:bg-gray-800">
         <div className="flex justify-between items-center h-full">
           {/* 메뉴 */}
           <div onClick={() => router.push("/")} className="flex space-x-4">
@@ -86,7 +87,7 @@ const Header = () => {
                 setTheme(currentTheme === "dark" ? "light" : "dark");
               }}
             >
-              {currentTheme === "dark" ? (
+              {currentTheme?.toLowerCase() === "dark" ? (
                 <img
                   className="w-[24px] ease-in-out duration-300 transition-all"
                   src="/moon_w.png"
@@ -137,7 +138,7 @@ const Header = () => {
             </button>
           </div>
         </div>
-        <div className="absolute bottom-0 left-0 w-full h-[4px] bg-[#ebebeb] transition-background duration-300 ease z-50">
+        <div className="absolute bottom-0 left-0 w-full h-[4px] bg-[#ebebeb] dark:bg-[#b3b3b3] transition-background duration-300 ease z-50">
           <span
             className="absolute bottom-0 left-0 h-full bg-gradient-to-r from-red-500 via-purple-500 to-cyan-500  border-[#12c2e9] transition-background duration-300 ease"
             style={{ width: `${scrollPercentage}%` }}

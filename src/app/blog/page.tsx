@@ -14,11 +14,9 @@ const Page = async () => {
   }
 
   return (
-    <section>
-      <Suspense fallback={<SkMain />}>
-        <Main jsonData={jsonData} />
-      </Suspense>
-    </section>
+    <Suspense fallback={<SkMain />}>
+      <Main jsonData={jsonData} />
+    </Suspense>
   );
 };
 

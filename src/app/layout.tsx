@@ -25,7 +25,6 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
           <Suspense fallback={<SkHeader />}>
             <Header />
           </Suspense>
-          <Aside />
           <>{children}</>
           <Footer />
         </Providers>

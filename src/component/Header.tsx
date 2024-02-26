@@ -11,7 +11,9 @@ const Header = () => {
   const router = useRouter();
 
   const { systemTheme, theme, setTheme } = useTheme();
-  const currentTheme = theme === "system" ? "dark" : theme;
+  const [currentTheme, setCurrentTheme] = useState(
+    theme === "system" ? "dark" : theme
+  );
 
   const handleScroll = () => {
     const scrollPosition = window.scrollY;
@@ -28,7 +30,12 @@ const Header = () => {
     };
   }, []);
 
-  console.log("currentTheme: " + currentTheme);
+  useEffect(() => {
+    setCurrentTheme(theme === "system" ? "dark" : theme);
+  }, [theme]);
+
+  console.log(currentTheme);
+
   return (
     <nav>
       <div className="max-w-full mx-auto desktop:px-16 mobile:px-4 fixed top-0 left-0 w-full h-[55px] px-4 shadow-header overflow-hidden z-50 bg-white dark:bg-gray-800">
@@ -87,7 +94,7 @@ const Header = () => {
                 setTheme(currentTheme === "dark" ? "light" : "dark");
               }}
             >
-              {currentTheme?.toLowerCase() === "dark" ? (
+              {theme?.toLowerCase() === "dark" ? (
                 <img
                   className="w-[24px] ease-in-out duration-300 transition-all"
                   src="/moon_w.png"

@@ -1,6 +1,5 @@
 import Header from "@/component/Header";
 import "./globals.css";
-
 import "./prism.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
@@ -8,7 +7,6 @@ import Footer from "@/component/Footer";
 import { Suspense } from "react";
 import SkHeader from "@/skeletion/SkHeader";
 import Providers from "./Provider";
-import Aside from "@/component/Aside";
 
 const inter = Inter({ subsets: ["latin"] });
 

@@ -22,7 +22,7 @@ const Main = async ({ jsonData }: { jsonData: iPost[] }) => {
             />
           </div>
           <div className="pr-5 text-[20px] font-bold">
-            <span>All(1)</span>
+            <span>All({jsonData?.length})</span>
           </div>
         </div>
         {/* Post Item Start */}

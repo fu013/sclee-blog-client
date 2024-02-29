@@ -11,8 +11,6 @@ const Pagination: React.FC<PaginationProps> = ({
   currentPage,
 }) => {
   const totalPages = Math.ceil(totalDataNums / 5); // 페이지당 5개의 아이템으로 가정
-
-  console.log(totalPages);
   const renderPaginationButtons = () => {
     const buttons = [];
     for (let i = 1; i <= totalPages; i++) {
@@ -20,7 +18,11 @@ const Pagination: React.FC<PaginationProps> = ({
         <Link
           href={`/blog?page=${i}`}
           key={i}
-          className={currentPage === i.toString() ? "active" : ""}
+          className={
+            currentPage === i.toString()
+              ? "active basic-font-color mx-4 text-[20px] font-bold"
+              : "basic-font-color mx-4 text-[20px]"
+          }
         >
           {i}
         </Link>
@@ -30,7 +32,7 @@ const Pagination: React.FC<PaginationProps> = ({
   };
 
   return (
-    <div className="pagination text-white text-center">
+    <div className="pagination pl-[280px] mb-[80px] text-white text-center">
       {renderPaginationButtons()}
     </div>
   );

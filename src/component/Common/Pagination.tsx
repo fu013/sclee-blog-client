@@ -11,15 +11,30 @@ const Pagination: React.FC<PaginationProps> = ({
   currentPage,
 }) => {
   const totalPages = Math.ceil(totalDataNums / 5); // 페이지당 5개의 아이템으로 가정
+
   const renderPaginationButtons = () => {
     const buttons = [];
+    // Previous Button
+    if (currentPage > 1) {
+      buttons.push(
+        <Link
+          href={`/blog?page=${parseInt(currentPage) - 1}`}
+          key={"prev"}
+          className="basic-font-color mx-4 text-[20px]"
+        >
+          {"⬅️"}
+        </Link>
+      );
+    }
+
+    // Page Buttons
     for (let i = 1; i <= totalPages; i++) {
       buttons.push(
         <Link
           href={`/blog?page=${i}`}
           key={i}
           className={
-            currentPage === i
+            parseInt(currentPage) === i
               ? "active basic-font-color mx-4 text-[20px] font-bold"
               : "basic-font-color mx-4 text-[20px]"
           }
@@ -28,6 +43,20 @@ const Pagination: React.FC<PaginationProps> = ({
         </Link>
       );
     }
+
+    // Next Button
+    if (currentPage < totalPages) {
+      buttons.push(
+        <Link
+          href={`/blog?page=${parseInt(currentPage) + 1}`}
+          key={"next"}
+          className="basic-font-color mx-4 text-[20px]"
+        >
+          {"➡️"}
+        </Link>
+      );
+    }
+
     return buttons;
   };
 

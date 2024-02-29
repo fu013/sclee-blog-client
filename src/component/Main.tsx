@@ -35,12 +35,15 @@ const Main = async ({ jsonData }: { jsonData: iPost[] }) => {
             <img
               className="w-[6.5rem] h-[6.5rem] mr-10"
               src={
-                process.env.NEXT_PUBLIC_IMAGE_PREVIEW_URL +
-                "/" +
-                extractSubstringAfterUploads(item?.path)
+                item?.path
+                  ? `${
+                      process.env.NEXT_PUBLIC_IMAGE_PREVIEW_URL
+                    }/${extractSubstringAfterUploads(item.path)}`
+                  : "/no_img.jpg"
               }
               alt="thumbnail"
             />
+
             <span className="feed btn-6 w-full">
               <div className="feed-info">
                 <div>{TagTransformer(item.tags)}</div>

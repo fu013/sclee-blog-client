@@ -34,8 +34,6 @@ const Header = () => {
     setCurrentTheme(theme === "system" ? "dark" : theme);
   }, [theme]);
 
-  console.log(currentTheme);
-
   return (
     <nav>
       <div className="max-w-full mx-auto desktop:px-16 mobile:px-4 fixed top-0 left-0 w-full h-[55px] px-4 shadow-header overflow-hidden z-50 bg-white dark:bg-gray-800">
@@ -76,7 +74,7 @@ const Header = () => {
                 About
               </Link>
               <Link
-                href="/blog"
+                href="/blog?page=1"
                 className="py-0 px-3 text-gray-700 dark:text-white hover:text-gray-900 font-[600]"
               >
                 Blog

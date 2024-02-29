@@ -82,7 +82,11 @@ const Aside = () => {
           </Link> */}
           {totalTags &&
             Array.from(totalTags?.entries()).map(([tag, count]) => (
-              <Link href={`/blog/tag/${tag}`} key={tag} className="block ct-li">
+              <Link
+                href={`/blog/tag/${tag}?page=1`}
+                key={tag}
+                className="block ct-li"
+              >
                 📄 {tag}
                 {count > 1 ? `(${count})` : null}
               </Link>

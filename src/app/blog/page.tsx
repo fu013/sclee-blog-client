@@ -36,10 +36,12 @@ const Page = async ({
   }
 
   return (
-    <Suspense fallback={<SkMain />}>
-      <Main jsonData={jsonData?.content} jsonDataLength={jsonDataLength} />
-      <Pagination totalDataNums={jsonDataLength} currentPage={page} />
-    </Suspense>
+    <>
+      <Suspense fallback={<SkMain />}>
+        <Main jsonData={jsonData?.content} jsonDataLength={jsonDataLength} />
+        <Pagination totalDataNums={jsonDataLength} currentPage={page} />
+      </Suspense>
+    </>
   );
 };
 

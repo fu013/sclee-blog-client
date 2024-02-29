@@ -3,6 +3,7 @@ import Main from "@/component/Main";
 import { Suspense } from "react";
 import { SSRfetch } from "@/api/fetch";
 import { iPost } from "@/interface";
+import Pagination from "@/component/Common/Pagination";
 
 const Page = async ({
   params,
@@ -30,18 +31,22 @@ const Page = async ({
     }
   };
   await fetchData();
-  if (!response.ok) {
-    console.error("Server returned an error:", response.status);
+
+  if (!res.ok) {
+    console.error("Server returned an error:", res.status);
   } else {
     jsonDataByTag = await res.json();
   }
-
   return (
-    <section>
+    <>
       <Suspense fallback={<SkMain />}>
-        <Main jsonData={jsonDataByTag} jsonDataLength={jsonDataLength} />
+        <Main
+          jsonData={jsonDataByTag?.content}
+          jsonDataLength={jsonDataLength}
+        />
+        <Pagination totalDataNums={jsonDataLength} currentPage={page} />
       </Suspense>
-    </section>
+    </>
   );
 };
 

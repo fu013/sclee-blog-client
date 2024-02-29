@@ -3,7 +3,7 @@ import Link from "next/link";
 
 interface PaginationProps {
   totalDataNums: number;
-  currentPage: string;
+  currentPage: number | number[];
 }
 
 const Pagination: React.FC<PaginationProps> = ({
@@ -19,7 +19,7 @@ const Pagination: React.FC<PaginationProps> = ({
           href={`/blog?page=${i}`}
           key={i}
           className={
-            currentPage === i.toString()
+            currentPage === i
               ? "active basic-font-color mx-4 text-[20px] font-bold"
               : "basic-font-color mx-4 text-[20px]"
           }

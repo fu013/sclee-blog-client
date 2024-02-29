@@ -5,7 +5,13 @@ import TagTransformer from "./Common/TagTransformer";
 import moment from "moment";
 import extractSubstringAfterUploads from "@/lib/extractSubstringAfterUploads";
 
-const Main = async ({ jsonData }: { jsonData: iPost[] }) => {
+const Main = ({
+  jsonData,
+  jsonDataLength,
+}: {
+  jsonData: iPost[];
+  jsonDataLength: number;
+}) => {
   return (
     <main>
       <div className="mx-auto desktop:w-[960px] mobile:w-full">
@@ -22,7 +28,7 @@ const Main = async ({ jsonData }: { jsonData: iPost[] }) => {
             />
           </div>
           <div className="pr-5 text-[20px] font-bold">
-            <span>All({jsonData?.length})</span>
+            <span>All({jsonDataLength})</span>
           </div>
         </div>
         {/* Post Item Start */}

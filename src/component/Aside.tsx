@@ -10,10 +10,10 @@ const Aside = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const resAll = await SSRfetch("/post/all");
+        const resAll = await SSRfetch("/post/all?page=1&size=999999999");
         const jsonData: iPost[] = await resAll.json();
 
-        const newTotalTags = jsonData?.reduce(
+        const newTotalTags = jsonData?.content?.reduce(
           (accumulator: Map<string, number>, currentItem: any) => {
             const tagsArray = currentItem.tags?.split(",");
             tagsArray?.forEach((tag: string) => {

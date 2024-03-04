@@ -7,7 +7,7 @@ export const metadata: Metadata = {
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className="max-w-[100%] mx-auto pl-[320px] pt-[80px]">{children}</div>
+    <div className="max-w-[100%] mx-auto pl-[4000px] pt-[80px]">{children}</div>
   );
 };
 
